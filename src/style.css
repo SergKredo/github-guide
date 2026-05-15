@@ -1327,15 +1327,17 @@ code {
   color: #d1f0e3;
 }
 
-/* ===== Side navigation (persistent left menu) ===== */
+/* ===== Side navigation (persistent left rail, full height) ===== */
 .sidenav {
   position: fixed;
-  top: 80px;
-  left: 14px;
+  top: 0;
+  left: 0;
+  bottom: 0;
   z-index: 30;
-  width: 216px;
-  max-height: calc(100vh - 96px);
+  width: 260px;
   font-size: 12.5px;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidenav-toggle {
@@ -1365,13 +1367,14 @@ code {
 }
 
 .sidenav-panel {
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(220, 227, 235, 0.85);
-  border-radius: 12px;
-  box-shadow: 0 10px 32px rgba(28, 45, 64, 0.08);
+  flex: 1;
+  background: rgba(255, 255, 255, 0.96);
+  border: 0;
+  border-right: 1px solid rgba(220, 227, 235, 0.85);
+  border-radius: 0;
+  box-shadow: 4px 0 24px rgba(28, 45, 64, 0.06);
   backdrop-filter: blur(16px);
-  padding: 12px 8px 12px 12px;
-  max-height: calc(100vh - 96px);
+  padding: 22px 14px 22px 18px;
   overflow-y: auto;
   scrollbar-width: thin;
 }
@@ -1474,27 +1477,26 @@ code {
 /* Reserve space for the sidenav on wide screens so it never overlaps content */
 @media (min-width: 1280px) {
   body {
-    padding-left: 244px;
+    padding-left: 260px;
   }
 }
 
 /* On narrower screens, hide the panel and show the burger toggle */
 @media (max-width: 1279px) {
-  .sidenav {
-    top: 0;
-    left: 0;
-    width: auto;
-    max-height: none;
-  }
   .sidenav-toggle {
     display: flex;
   }
+  .sidenav {
+    width: auto;
+    bottom: auto;
+  }
   .sidenav-panel {
     position: fixed;
-    top: 64px;
-    left: 14px;
+    top: 0;
+    bottom: 0;
+    left: 0;
     width: 280px;
-    max-height: calc(100vh - 80px);
+    border-right: 1px solid rgba(220, 227, 235, 0.85);
     transform: translateX(-110%);
     transition: transform 0.22s ease;
   }
@@ -1512,9 +1514,9 @@ code {
   background: var(--ink);
 }
 :root[data-theme="dark"] .sidenav-panel {
-  background: rgba(22, 27, 34, 0.94);
-  border-color: rgba(42, 52, 65, 0.85);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.4);
+  background: rgba(22, 27, 34, 0.96);
+  border-right-color: rgba(42, 52, 65, 0.85);
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.45);
 }
 :root[data-theme="dark"] .sidenav-link {
   color: var(--ink);
