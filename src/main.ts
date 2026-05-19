@@ -3161,69 +3161,151 @@ sectionMap.forEach((_, id) => {
   if (section) spyObserver.observe(section)
 })
 
-// --- Tooltips for git commands ---
-const cmdTooltips: Record<string, { ru: string; en: string }> = {
-  'git init': { ru: 'Создаёт новый репозиторий в папке — как завести дневник для проекта', en: 'Creates a new repository in the folder — like starting a diary for a project' },
-  'git clone': { ru: 'Скачивает копию проекта из интернета на твой компьютер', en: 'Downloads a copy of a project from the internet to your computer' },
-  'git add': { ru: 'Отмечает файлы, которые ты хочешь сохранить — как положить вещи в коробку перед отправкой', en: 'Marks files you want to save — like putting things in a box before shipping' },
-  'git commit': { ru: 'Сохраняет отмеченные изменения с подписью — как сделать фото текущего состояния', en: 'Saves marked changes with a message — like taking a snapshot of the current state' },
-  'git push': { ru: 'Отправляет твои сохранения на сервер, чтобы другие тоже их увидели', en: 'Sends your saves to the server so others can see them too' },
-  'git pull': { ru: 'Скачивает чужие изменения с сервера и сразу применяет к твоему коду', en: 'Downloads others\' changes from the server and applies them to your code' },
-  'git fetch': { ru: 'Проверяет, что нового на сервере, но не трогает твой код', en: 'Checks what\'s new on the server without touching your code' },
-  'git status': { ru: 'Показывает, какие файлы изменены и что ещё не сохранено', en: 'Shows which files are changed and what\'s not yet saved' },
-  'git log': { ru: 'Показывает историю всех сохранений — кто, когда и что менял', en: 'Shows the history of all saves — who changed what and when' },
-  'git diff': { ru: 'Показывает разницу между версиями — что именно было добавлено или убрано', en: 'Shows the difference between versions — what was added or removed' },
-  'git branch': { ru: 'Создаёт или показывает ветки — параллельные версии проекта', en: 'Creates or shows branches — parallel versions of the project' },
-  'git checkout': { ru: 'Переключается на другую ветку или возвращает файл к прошлому состоянию', en: 'Switches to another branch or restores a file to a previous state' },
-  'git switch': { ru: 'Переключается на другую ветку (более простая альтернатива checkout)', en: 'Switches to another branch (simpler alternative to checkout)' },
-  'git merge': { ru: 'Объединяет две ветки в одну — как соединить два черновика в один документ', en: 'Combines two branches into one — like merging two drafts into one document' },
-  'git rebase': { ru: 'Переносит твои коммиты поверх чужих — делает историю линейной и чистой', en: 'Moves your commits on top of others — makes history linear and clean' },
-  'git reset': { ru: 'Отменяет сохранения или убирает файлы из подготовленных — как кнопка «назад»', en: 'Undoes saves or unstages files — like a back button' },
-  'git revert': { ru: 'Создаёт новый коммит, который отменяет старый — безопасная отмена', en: 'Creates a new commit that undoes an old one — safe undo' },
-  'git stash': { ru: 'Прячет текущие изменения во временное хранилище, чтобы вернуться к ним позже', en: 'Hides current changes in a temporary storage to come back to them later' },
-  'git tag': { ru: 'Ставит метку на коммит — как закладка с названием версии (v1.0)', en: 'Puts a label on a commit — like a bookmark with a version name (v1.0)' },
-  'git remote': { ru: 'Управляет ссылками на серверы, где хранится проект', en: 'Manages links to servers where the project is stored' },
-  'git cherry-pick': { ru: 'Берёт один конкретный коммит из другой ветки и применяет к текущей', en: 'Takes one specific commit from another branch and applies it to the current one' },
-  'git bisect': { ru: 'Помогает найти коммит, в котором появилась ошибка — ищет методом деления пополам', en: 'Helps find the commit that introduced a bug — searches by splitting in half' },
-  'git blame': { ru: 'Показывает, кто последний менял каждую строку файла', en: 'Shows who last changed each line of a file' },
-  'git clean': { ru: 'Удаляет неотслеживаемые файлы — как уборка мусора в папке', en: 'Removes untracked files — like cleaning junk from a folder' },
-  'git config': { ru: 'Настраивает Git — имя, email, поведение команд', en: 'Configures Git — name, email, command behavior' },
-  'git rm': { ru: 'Удаляет файл и сразу отмечает удаление для сохранения', en: 'Deletes a file and marks the deletion for the next save' },
-  'git mv': { ru: 'Переименовывает или перемещает файл, сохраняя историю', en: 'Renames or moves a file while keeping history' },
-  'git show': { ru: 'Показывает подробности конкретного коммита — что было изменено', en: 'Shows details of a specific commit — what was changed' },
-  'git reflog': { ru: 'Показывает ВСЮ историю перемещений HEAD — спасает, если что-то потерялось', en: 'Shows ALL history of HEAD movements — saves you when something is lost' },
-  'git restore': { ru: 'Возвращает файл к последнему сохранённому состоянию', en: 'Restores a file to its last saved state' },
-  'git worktree': { ru: 'Позволяет работать с несколькими ветками одновременно в разных папках', en: 'Lets you work with multiple branches simultaneously in different folders' },
-  'git submodule': { ru: 'Подключает другой репозиторий внутрь твоего как вложенную папку', en: 'Connects another repository inside yours as a nested folder' },
-  'git archive': { ru: 'Создаёт zip/tar архив из файлов репозитория', en: 'Creates a zip/tar archive from repository files' },
-  'git shortlog': { ru: 'Краткая сводка коммитов по авторам', en: 'Brief summary of commits by author' },
-  'git describe': { ru: 'Показывает ближайший тег и расстояние до текущего коммита', en: 'Shows the nearest tag and distance to the current commit' },
+// --- Token-level tooltips for git commands ---
+const tokenTips: Record<string, { ru: string; en: string }> = {
+  // The git binary itself
+  'git': { ru: 'Программа для управления версиями файлов', en: 'Version control program' },
+  // Subcommands
+  'init': { ru: 'Подкоманда: создать новый репозиторий', en: 'Subcommand: create a new repository' },
+  'clone': { ru: 'Подкоманда: скачать копию проекта', en: 'Subcommand: download a copy of a project' },
+  'add': { ru: 'Подкоманда: подготовить файлы к сохранению', en: 'Subcommand: stage files for saving' },
+  'commit': { ru: 'Подкоманда: сохранить изменения как снимок', en: 'Subcommand: save changes as a snapshot' },
+  'push': { ru: 'Подкоманда: отправить коммиты на сервер', en: 'Subcommand: send commits to the server' },
+  'pull': { ru: 'Подкоманда: скачать и применить чужие изменения', en: 'Subcommand: download and apply remote changes' },
+  'fetch': { ru: 'Подкоманда: проверить обновления на сервере (без изменения кода)', en: 'Subcommand: check for updates on server (without changing code)' },
+  'status': { ru: 'Подкоманда: показать состояние файлов', en: 'Subcommand: show file status' },
+  'log': { ru: 'Подкоманда: показать историю коммитов', en: 'Subcommand: show commit history' },
+  'diff': { ru: 'Подкоманда: показать разницу между версиями', en: 'Subcommand: show differences between versions' },
+  'branch': { ru: 'Подкоманда: управление ветками', en: 'Subcommand: manage branches' },
+  'checkout': { ru: 'Подкоманда: переключиться на ветку/восстановить файл', en: 'Subcommand: switch branch or restore file' },
+  'switch': { ru: 'Подкоманда: переключиться на другую ветку', en: 'Subcommand: switch to another branch' },
+  'merge': { ru: 'Подкоманда: объединить ветки', en: 'Subcommand: merge branches' },
+  'rebase': { ru: 'Подкоманда: перенести коммиты на новую базу', en: 'Subcommand: move commits onto a new base' },
+  'reset': { ru: 'Подкоманда: откатить состояние назад', en: 'Subcommand: roll back state' },
+  'revert': { ru: 'Подкоманда: отменить коммит новым коммитом', en: 'Subcommand: undo a commit with a new commit' },
+  'stash': { ru: 'Подкоманда: спрятать изменения во временное хранилище', en: 'Subcommand: stash changes temporarily' },
+  'tag': { ru: 'Подкоманда: поставить метку на коммит (версия)', en: 'Subcommand: tag a commit (version label)' },
+  'remote': { ru: 'Подкоманда: управление удалёнными серверами', en: 'Subcommand: manage remote servers' },
+  'cherry-pick': { ru: 'Подкоманда: применить один коммит из другой ветки', en: 'Subcommand: apply one commit from another branch' },
+  'bisect': { ru: 'Подкоманда: найти коммит с багом (метод деления пополам)', en: 'Subcommand: find buggy commit (binary search)' },
+  'blame': { ru: 'Подкоманда: кто менял каждую строку', en: 'Subcommand: who changed each line' },
+  'clean': { ru: 'Подкоманда: удалить неотслеживаемые файлы', en: 'Subcommand: remove untracked files' },
+  'config': { ru: 'Подкоманда: настройки Git', en: 'Subcommand: Git settings' },
+  'rm': { ru: 'Подкоманда: удалить файл из репозитория', en: 'Subcommand: remove file from repository' },
+  'mv': { ru: 'Подкоманда: переместить/переименовать файл', en: 'Subcommand: move/rename file' },
+  'show': { ru: 'Подкоманда: показать детали коммита', en: 'Subcommand: show commit details' },
+  'reflog': { ru: 'Подкоманда: вся история перемещений HEAD', en: 'Subcommand: full history of HEAD movements' },
+  'restore': { ru: 'Подкоманда: восстановить файл до сохранённого состояния', en: 'Subcommand: restore file to saved state' },
+  'worktree': { ru: 'Подкоманда: работать с несколькими ветками в разных папках', en: 'Subcommand: work with multiple branches in separate folders' },
+  'submodule': { ru: 'Подкоманда: вложенный репозиторий внутри проекта', en: 'Subcommand: nested repository inside a project' },
+  // Common flags
+  '--global': { ru: 'Флаг: применить настройку для всех проектов на компьютере', en: 'Flag: apply setting for all projects on this computer' },
+  '--local': { ru: 'Флаг: применить только для текущего репозитория', en: 'Flag: apply only for current repository' },
+  '--system': { ru: 'Флаг: применить для всех пользователей системы', en: 'Flag: apply for all users on this system' },
+  '--force': { ru: 'Флаг: выполнить принудительно (опасно!)', en: 'Flag: force execution (dangerous!)' },
+  '-f': { ru: 'Флаг: сокращение для --force (принудительно)', en: 'Flag: short for --force (force)' },
+  '--hard': { ru: 'Флаг: сбросить всё — и индекс, и рабочие файлы', en: 'Flag: reset everything — index and working files' },
+  '--soft': { ru: 'Флаг: откатить коммит, но оставить файлы подготовленными', en: 'Flag: undo commit but keep files staged' },
+  '--mixed': { ru: 'Флаг: откатить коммит и убрать из подготовленных', en: 'Flag: undo commit and unstage files' },
+  '--oneline': { ru: 'Флаг: показать каждый коммит одной строкой', en: 'Flag: show each commit in one line' },
+  '--graph': { ru: 'Флаг: нарисовать дерево веток символами', en: 'Flag: draw branch tree with symbols' },
+  '--all': { ru: 'Флаг: применить ко всем (веткам/файлам)', en: 'Flag: apply to all (branches/files)' },
+  '-m': { ru: 'Флаг: указать сообщение (message)', en: 'Flag: specify message' },
+  '-a': { ru: 'Флаг: добавить все изменённые файлы автоматически', en: 'Flag: add all modified files automatically' },
+  '-b': { ru: 'Флаг: создать новую ветку', en: 'Flag: create a new branch' },
+  '-d': { ru: 'Флаг: удалить (безопасно — только если смёржена)', en: 'Flag: delete (safe — only if merged)' },
+  '-D': { ru: 'Флаг: удалить принудительно (даже если не смёржена)', en: 'Flag: force delete (even if not merged)' },
+  '--no-ff': { ru: 'Флаг: создать merge-коммит даже если можно без него', en: 'Flag: create merge commit even if fast-forward is possible' },
+  '--squash': { ru: 'Флаг: сжать все коммиты ветки в один', en: 'Flag: squash all branch commits into one' },
+  '--rebase': { ru: 'Флаг: использовать rebase вместо merge при pull', en: 'Flag: use rebase instead of merge when pulling' },
+  '--prune': { ru: 'Флаг: удалить ссылки на ветки, которых уже нет на сервере', en: 'Flag: remove references to branches deleted on server' },
+  '--dry-run': { ru: 'Флаг: показать что будет сделано, но не делать', en: 'Flag: show what would be done without doing it' },
+  '-v': { ru: 'Флаг: подробный вывод (verbose)', en: 'Flag: verbose output' },
+  '--verbose': { ru: 'Флаг: подробный вывод', en: 'Flag: verbose output' },
+  '-u': { ru: 'Флаг: установить связь с удалённой веткой (upstream)', en: 'Flag: set upstream tracking branch' },
+  '--set-upstream': { ru: 'Флаг: привязать локальную ветку к удалённой', en: 'Flag: link local branch to remote branch' },
+  '--cached': { ru: 'Флаг: работать с подготовленными (staged) файлами', en: 'Flag: work with staged files' },
+  '--staged': { ru: 'Флаг: то же что --cached — подготовленные файлы', en: 'Flag: same as --cached — staged files' },
+  '-p': { ru: 'Флаг: выбирать изменения по частям (patch)', en: 'Flag: pick changes interactively (patch)' },
+  '--patch': { ru: 'Флаг: интерактивный выбор изменений по кусочкам', en: 'Flag: interactively select changes in chunks' },
+  '--stat': { ru: 'Флаг: показать статистику изменений (сколько строк)', en: 'Flag: show change statistics (line counts)' },
+  '--amend': { ru: 'Флаг: исправить последний коммит (сообщение или файлы)', en: 'Flag: fix last commit (message or files)' },
+  '--abort': { ru: 'Флаг: отменить текущую операцию (merge/rebase/cherry-pick)', en: 'Flag: abort current operation (merge/rebase/cherry-pick)' },
+  '--continue': { ru: 'Флаг: продолжить операцию после разрешения конфликтов', en: 'Flag: continue operation after resolving conflicts' },
+  '--skip': { ru: 'Флаг: пропустить текущий шаг и продолжить', en: 'Flag: skip current step and continue' },
+  '-i': { ru: 'Флаг: интерактивный режим (выбирать действия вручную)', en: 'Flag: interactive mode (choose actions manually)' },
+  '--interactive': { ru: 'Флаг: интерактивный режим', en: 'Flag: interactive mode' },
+  '--depth': { ru: 'Флаг: ограничить глубину клонирования (количество коммитов)', en: 'Flag: limit clone depth (number of commits)' },
+  '--no-verify': { ru: 'Флаг: пропустить проверки (хуки) — используй осторожно', en: 'Flag: skip checks (hooks) — use carefully' },
+  '--allow-empty': { ru: 'Флаг: разрешить коммит без изменений', en: 'Flag: allow commit without changes' },
+  '--follow': { ru: 'Флаг: отслеживать историю даже после переименования файла', en: 'Flag: track history even after file rename' },
+  '-n': { ru: 'Флаг: ограничить количество результатов', en: 'Flag: limit number of results' },
+  '--pretty': { ru: 'Флаг: настроить формат вывода', en: 'Flag: customize output format' },
+  '--decorate': { ru: 'Флаг: показать ветки и теги рядом с коммитами', en: 'Flag: show branches and tags next to commits' },
+  '--no-edit': { ru: 'Флаг: не открывать редактор для сообщения', en: 'Flag: do not open editor for message' },
+  '--orphan': { ru: 'Флаг: создать ветку без истории (пустая)', en: 'Flag: create branch without history (empty)' },
+  '--bare': { ru: 'Флаг: создать репозиторий без рабочих файлов (серверный)', en: 'Flag: create repository without working files (server)' },
+  '-r': { ru: 'Флаг: работать с удалёнными ветками (remote)', en: 'Flag: work with remote branches' },
+  '--track': { ru: 'Флаг: автоматически связать с удалённой веткой', en: 'Flag: automatically track remote branch' },
+  '--mirror': { ru: 'Флаг: полное зеркало репозитория', en: 'Flag: full mirror of repository' },
+  '--recurse-submodules': { ru: 'Флаг: применить также ко всем вложенным модулям', en: 'Flag: apply to all submodules too' },
+  // Common arguments/values
+  'origin': { ru: 'Имя удалённого сервера по умолчанию', en: 'Default remote server name' },
+  'main': { ru: 'Главная ветка проекта', en: 'Main project branch' },
+  'master': { ru: 'Главная ветка (старое название по умолчанию)', en: 'Main branch (old default name)' },
+  'HEAD': { ru: 'Указатель на текущий коммит (где ты сейчас)', en: 'Pointer to current commit (where you are now)' },
+  'HEAD~1': { ru: 'Один коммит назад от текущего', en: 'One commit back from current' },
+  'HEAD~2': { ru: 'Два коммита назад от текущего', en: 'Two commits back from current' },
+  'true': { ru: 'Значение: включено / да', en: 'Value: enabled / yes' },
+  'false': { ru: 'Значение: выключено / нет', en: 'Value: disabled / no' },
+  // Config keys
+  'pull.rebase': { ru: 'Настройка: использовать rebase при git pull вместо merge', en: 'Setting: use rebase on git pull instead of merge' },
+  'user.name': { ru: 'Настройка: твоё имя для подписи коммитов', en: 'Setting: your name for commit signatures' },
+  'user.email': { ru: 'Настройка: твой email для подписи коммитов', en: 'Setting: your email for commit signatures' },
+  'core.autocrlf': { ru: 'Настройка: автоматическое преобразование переносов строк', en: 'Setting: auto-convert line endings' },
+  'push.default': { ru: 'Настройка: что push отправляет по умолчанию', en: 'Setting: what push sends by default' },
+  'pull.ff': { ru: 'Настройка: поведение fast-forward при pull', en: 'Setting: fast-forward behavior on pull' },
+  'init.defaultBranch': { ru: 'Настройка: имя ветки по умолчанию для новых репозиториев', en: 'Setting: default branch name for new repos' },
+  'credential.helper': { ru: 'Настройка: как хранить пароли/токены', en: 'Setting: how to store passwords/tokens' },
+  'fetch.prune': { ru: 'Настройка: автоудаление мёртвых ссылок при fetch', en: 'Setting: auto-prune dead refs on fetch' },
+  'rebase.autoStash': { ru: 'Настройка: автоматически прятать изменения перед rebase', en: 'Setting: auto-stash changes before rebase' },
+  'pull.autoStash': { ru: 'Настройка: автоматически прятать изменения перед pull', en: 'Setting: auto-stash changes before pull' },
+  // Dot notation shorthand
+  '.': { ru: 'Текущая папка (все файлы)', en: 'Current folder (all files)' },
+  '--': { ru: 'Разделитель: после него идут имена файлов, а не опции', en: 'Separator: filenames follow, not options' },
 }
 
-// Attach tooltips to <code> elements containing git commands
-;(function attachTooltips() {
+// Attach per-token tooltips inside <code> elements that contain git commands
+;(function attachTokenTooltips() {
   const codeEls = document.querySelectorAll<HTMLElement>('code')
-  const cmdKeys = Object.keys(cmdTooltips).sort((a, b) => b.length - a.length) // longest first
+  // Keys sorted longest first for greedy matching
+  const tokenKeys = Object.keys(tokenTips).sort((a, b) => b.length - a.length)
 
   codeEls.forEach((el) => {
-    const text = el.textContent?.trim().toLowerCase() ?? ''
-    // Match if the code contains a known git command keyword
-    const matched = cmdKeys.find((cmd) => {
-      const idx = text.indexOf(cmd)
-      if (idx === -1) return false
-      // Ensure it's a word boundary (not part of a longer word)
-      const after = text[idx + cmd.length]
-      return !after || after === ' ' || after === '\n' || after === '\t' || after === '\r' || after === '/' || after === '"' || after === "'"
-    })
-    if (!matched) return
-    // Skip if already wrapped or inside tooltip wrap
-    if (el.closest('.git-tooltip-wrap')) return
+    const raw = el.textContent ?? ''
+    // Only process elements that contain "git" keyword
+    if (!/\bgit\b/.test(raw)) return
+    // Skip if already processed
+    if (el.dataset.tokenized) return
+    el.dataset.tokenized = '1'
 
-    const tip = lang === 'en' ? cmdTooltips[matched].en : cmdTooltips[matched].ru
-    const wrapper = document.createElement('span')
-    wrapper.className = 'git-tooltip-wrap'
-    wrapper.setAttribute('data-tip', tip)
-    el.parentNode!.insertBefore(wrapper, el)
-    wrapper.appendChild(el)
+    // Split preserving spaces
+    const parts = raw.split(/(\s+)/)
+    let html = ''
+    parts.forEach((part) => {
+      if (/^\s+$/.test(part)) {
+        html += part
+        return
+      }
+      // Try to match against token dictionary
+      const key = tokenKeys.find((k) => part === k || part.toLowerCase() === k)
+      if (key) {
+        const tip = lang === 'en' ? tokenTips[key].en : tokenTips[key].ru
+        html += `<span class="git-token-tip" data-tip="${tip.replace(/"/g, '&quot;')}">${part}</span>`
+      } else {
+        html += part
+      }
+    })
+    el.innerHTML = html
   })
 })()
