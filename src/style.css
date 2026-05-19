@@ -1738,55 +1738,82 @@ code {
   cursor: help;
 }
 
-.git-tooltip-wrap code {
-  border-bottom: 1px dashed var(--accent);
+.git-tooltip-wrap > code {
+  border-bottom: 1.5px dashed var(--accent);
+  transition: background 0.15s;
+}
+
+.git-tooltip-wrap:hover > code {
+  background: rgba(56, 189, 148, 0.12);
 }
 
 .git-tooltip-wrap::after {
   content: attr(data-tip);
   position: absolute;
-  bottom: calc(100% + 8px);
+  bottom: calc(100% + 10px);
   left: 50%;
-  transform: translateX(-50%);
-  background: var(--ink);
-  color: var(--bg);
-  font-size: 0.78rem;
-  line-height: 1.4;
-  padding: 6px 10px;
-  border-radius: 6px;
+  transform: translateX(-50%) scale(0.95);
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 0.8rem;
+  font-weight: 450;
+  line-height: 1.5;
+  padding: 8px 14px;
+  border-radius: 8px;
   white-space: normal;
   width: max-content;
-  max-width: 280px;
+  max-width: 300px;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.18s;
+  transition: opacity 0.2s, transform 0.2s;
   z-index: 9999;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid #e2e8f0;
   font-family: var(--font-body, system-ui, sans-serif);
+}
+
+:root[data-theme="dark"] .git-tooltip-wrap::after {
+  background: #1e293b;
+  color: #f1f5f9;
+  border-color: #334155;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.2);
 }
 
 .git-tooltip-wrap::before {
   content: '';
   position: absolute;
-  bottom: calc(100% + 2px);
+  bottom: calc(100% + 4px);
   left: 50%;
   transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: var(--ink);
+  border: 6px solid transparent;
+  border-top-color: #ffffff;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.18s;
+  transition: opacity 0.2s;
   z-index: 9999;
 }
 
-.git-tooltip-wrap:hover::after,
+:root[data-theme="dark"] .git-tooltip-wrap::before {
+  border-top-color: #1e293b;
+}
+
+.git-tooltip-wrap:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
 .git-tooltip-wrap:hover::before {
   opacity: 1;
 }
 
 @media (max-width: 768px) {
   .git-tooltip-wrap::after {
-    max-width: 200px;
-    font-size: 0.72rem;
+    max-width: 220px;
+    font-size: 0.74rem;
+    left: 0;
+    transform: translateX(0) scale(0.95);
+  }
+  .git-tooltip-wrap:hover::after {
+    transform: translateX(0) scale(1);
   }
 }

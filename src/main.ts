@@ -3206,11 +3206,17 @@ const cmdTooltips: Record<string, { ru: string; en: string }> = {
   const cmdKeys = Object.keys(cmdTooltips).sort((a, b) => b.length - a.length) // longest first
 
   codeEls.forEach((el) => {
-    const text = el.textContent?.trim() ?? ''
-    // Match if the code starts with a known git command
-    const matched = cmdKeys.find((cmd) => text === cmd || text.startsWith(cmd + ' ') || text.startsWith(cmd + '\n'))
+    const text = el.textContent?.trim().toLowerCase() ?? ''
+    // Match if the code contains a known git command keyword
+    const matched = cmdKeys.find((cmd) => {
+      const idx = text.indexOf(cmd)
+      if (idx === -1) return false
+      // Ensure it's a word boundary (not part of a longer word)
+      const after = text[idx + cmd.length]
+      return !after || after === ' ' || after === '\n' || after === '\t' || after === '\r' || after === '/' || after === '"' || after === "'"
+    })
     if (!matched) return
-    // Skip if already wrapped
+    // Skip if already wrapped or inside tooltip wrap
     if (el.closest('.git-tooltip-wrap')) return
 
     const tip = lang === 'en' ? cmdTooltips[matched].en : cmdTooltips[matched].ru
