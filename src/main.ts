@@ -3308,4 +3308,46 @@ const tokenTips: Record<string, { ru: string; en: string }> = {
     })
     el.innerHTML = html
   })
+
+  // Create floating tooltip element
+  const tipEl = document.createElement('div')
+  tipEl.className = 'git-tip-popup'
+  document.body.appendChild(tipEl)
+
+  document.addEventListener('mouseenter', (e) => {
+    const target = (e.target as HTMLElement).closest<HTMLElement>('.git-token-tip')
+    if (!target) return
+    const tip = target.dataset.tip
+    if (!tip) return
+    tipEl.textContent = tip
+    tipEl.classList.add('is-visible')
+
+    const rect = target.getBoundingClientRect()
+    tipEl.style.left = `${rect.left + rect.width / 2}px`
+    tipEl.style.top = `${rect.top - 8}px`
+    tipEl.style.transform = 'translate(-50%, -100%)'
+
+    // Clamp to viewport
+    requestAnimationFrame(() => {
+      const tipRect = tipEl.getBoundingClientRect()
+      if (tipRect.left < 8) {
+        tipEl.style.left = '8px'
+        tipEl.style.transform = 'translate(0, -100%)'
+      } else if (tipRect.right > window.innerWidth - 8) {
+        tipEl.style.left = `${window.innerWidth - 8}px`
+        tipEl.style.transform = 'translate(-100%, -100%)'
+      }
+      if (tipRect.top < 4) {
+        // Show below if no space above
+        tipEl.style.top = `${rect.bottom + 8}px`
+        tipEl.style.transform = tipEl.style.transform.replace('-100%)', '0)')
+      }
+    })
+  }, true)
+
+  document.addEventListener('mouseleave', (e) => {
+    const target = (e.target as HTMLElement).closest<HTMLElement>('.git-token-tip')
+    if (!target) return
+    tipEl.classList.remove('is-visible')
+  }, true)
 })()
