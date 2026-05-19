@@ -340,6 +340,122 @@ code {
   color: var(--muted);
 }
 
+/* ===== Extensions in action (timeline section) ===== */
+.ext-wf-timeline {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  padding-left: 56px;
+}
+.ext-wf-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 27px;
+  width: 3px;
+  background: var(--accent-soft);
+  border-radius: 2px;
+}
+
+.ext-wf-step {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.ext-wf-step:last-child { border-bottom: 0; }
+
+.ext-wf-stage {
+  position: absolute;
+  left: -56px;
+  top: 26px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-strong);
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(30, 138, 107, 0.25);
+  z-index: 1;
+}
+
+.ext-wf-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ext-wf-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.ext-wf-extensions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ext-wf-ext {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ext-wf-ext-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.ext-wf-ext-action {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.ext-wf-commands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.ext-wf-commands code {
+  background: #f4f6f9;
+  border: 1px solid var(--line);
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  color: #33485e;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+:root[data-theme="dark"] .ext-wf-commands code {
+  background: rgba(42, 52, 65, 0.5);
+  border-color: rgba(60, 75, 90, 0.6);
+  color: #c9d1d9;
+}
+:root[data-theme="dark"] .ext-wf-stage {
+  box-shadow: 0 4px 12px rgba(30, 138, 107, 0.35);
+}
+
 .command-layout {
   width: min(1120px, 100%);
   margin: 0 auto;
@@ -726,6 +842,18 @@ code {
   gap: 12px;
 }
 .strategy-card h3 { margin: 0; font-size: 1.2rem; }
+.strategy-viz {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 8px;
+  margin-bottom: 4px;
+}
+.strategy-viz svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 .strategy-summary { margin: 0; color: var(--muted); }
 .strategy-when { margin: 0; color: #33485e; }
 .strategy-cols {

@@ -23,14 +23,14 @@ document.documentElement.lang = lang
 const ui = {
   ru: {
     navAria: 'Основная навигация',
-    nav: { basics: 'Основы', start: 'Старт', commands: 'Команды', workflow: 'Workflow', cases: 'Случаи', strategies: 'Слияние', safety: 'Безопасность', extensions: 'Расширения', glossary: 'Глоссарий', tracks: 'Треки' },
+    nav: { basics: 'Основы', start: 'Старт', commands: 'Команды', workflow: 'Workflow', cases: 'Случаи', strategies: 'Слияние', safety: 'Безопасность', extensions: 'Расширения', extWorkflow: 'Экстеншены в деле', glossary: 'Глоссарий', tracks: 'Треки' },
     heroEyebrow: 'GitHub + VS Code для команды',
     heroTitle: 'Гайд по GitHub с нуля до уверенного pull request',
     heroLead: 'Пошаговая инструкция для обычного пользователя: установка, команды Git, работа в VS Code, реальные командные процессы, ревью, конфликты и полезные расширения.',
     heroBtnStart: 'Начать с нуля',
     heroBtnFlow: 'Посмотреть workflow',
     terminalAria: 'Визуализация рабочего процесса GitHub',
-    eyebrows: { basics: '01 / основы', start: '02 / подготовка', commands: '03 / команды', workflow: '04 / командная работа', cases: '05 / из жизни', strategies: '06 / слияние PR', safety: '07 / безопасность и гигиена', extensions: '08 / VS Code', glossary: '09 / словарь', tracks: '10 / треки прокачки' },
+    eyebrows: { basics: '01 / основы', start: '02 / подготовка', commands: '03 / команды', workflow: '04 / командная работа', cases: '05 / из жизни', strategies: '06 / слияние PR', safety: '07 / безопасность и гигиена', extensions: '08 / VS Code', extWorkflow: '09 / экстеншены в деле', glossary: '10 / словарь', tracks: '11 / треки прокачки' },
     h2: {
       basics: 'Что есть что: основные понятия простыми словами',
       start: 'Что настроить перед первой задачей',
@@ -40,6 +40,7 @@ const ui = {
       strategies: 'Какую стратегию слияния выбрать',
       safety: 'Что включить в любом репозитории',
       extensions: 'Расширения, которые помогают с GitHub',
+      extWorkflow: 'Как расширения работают на каждом этапе',
       glossary: 'Глоссарий терминов',
       tracks: 'Четыре уровня от новичка до мейнтейнера',
     },
@@ -52,6 +53,7 @@ const ui = {
       strategies: 'GitHub даёт три способа слить PR. Выбор влияет на историю, revert и разбор проблем.',
       safety: 'Эти вещи занимают один вечер на настройку, но экономят недели на разборе проблем.',
       extensions: 'Это не обязательный набор, но он сильно упрощает PR, историю, CI и навигацию по проектам.',
+      extWorkflow: 'Каждый этап Git-процесса — от первого clone до мержа PR — покрывается конкретным расширением. Ниже показано, где именно каждое из них включается в работу.',
       glossary: 'Чтобы не теряться в разговорах о "PR", "upstream" и "detached HEAD". Начните вводить термин, чтобы отфильтровать.',
       tracks: 'Пошаговые упражнения. Не переходите на следующий уровень, пока не выполнили все из текущего — каждый базируется на предыдущем.',
     },
@@ -100,14 +102,14 @@ const ui = {
   },
   en: {
     navAria: 'Main navigation',
-    nav: { basics: 'Basics', start: 'Setup', commands: 'Commands', workflow: 'Workflow', cases: 'Cases', strategies: 'Merging', safety: 'Safety', extensions: 'Extensions', glossary: 'Glossary', tracks: 'Tracks' },
+    nav: { basics: 'Basics', start: 'Setup', commands: 'Commands', workflow: 'Workflow', cases: 'Cases', strategies: 'Merging', safety: 'Safety', extensions: 'Extensions', extWorkflow: 'Extensions in action', glossary: 'Glossary', tracks: 'Tracks' },
     heroEyebrow: 'GitHub + VS Code for teams',
     heroTitle: 'A GitHub guide from zero to confident pull requests',
     heroLead: 'A step-by-step guide for an everyday user: install, Git commands, working in VS Code, real team processes, reviews, conflicts and useful extensions.',
     heroBtnStart: 'Start from scratch',
     heroBtnFlow: 'See the workflow',
     terminalAria: 'GitHub workflow visualization',
-    eyebrows: { basics: '01 / basics', start: '02 / setup', commands: '03 / commands', workflow: '04 / teamwork', cases: '05 / from real life', strategies: '06 / merging a PR', safety: '07 / safety & hygiene', extensions: '08 / VS Code', glossary: '09 / glossary', tracks: '10 / leveling tracks' },
+    eyebrows: { basics: '01 / basics', start: '02 / setup', commands: '03 / commands', workflow: '04 / teamwork', cases: '05 / from real life', strategies: '06 / merging a PR', safety: '07 / safety & hygiene', extensions: '08 / VS Code', extWorkflow: '09 / extensions in action', glossary: '10 / glossary', tracks: '11 / leveling tracks' },
     h2: {
       basics: 'What is what: core concepts in plain words',
       start: 'What to set up before your first task',
@@ -117,6 +119,7 @@ const ui = {
       strategies: 'Which merge strategy to pick',
       safety: 'What to enable in any repository',
       extensions: 'Extensions that help with GitHub',
+      extWorkflow: 'How extensions fit into each workflow stage',
       glossary: 'Glossary of terms',
       tracks: 'Four levels from beginner to maintainer',
     },
@@ -129,6 +132,7 @@ const ui = {
       strategies: 'GitHub gives three ways to merge a PR. The choice affects history, reverts and incident analysis.',
       safety: 'These take an evening to set up but save weeks of incident analysis later.',
       extensions: 'Not strictly required, but they make PRs, history, CI and project navigation much easier.',
+      extWorkflow: 'Every stage of the Git process — from initial clone to merging a PR — is covered by a specific extension. Below you can see where each one enters the workflow.',
       glossary: 'So you don\u2019t get lost in talk about "PR", "upstream" and "detached HEAD". Start typing a term to filter.',
       tracks: 'Step-by-step exercises. Do not move to the next level until you finish the current one — each builds on the previous.',
     },
@@ -562,6 +566,151 @@ const extensionsRu = [
   ['Code Spell Checker', 'Ловит опечатки в коммитах, именах веток и PR-описаниях.'],
 ]
 
+type ExtWorkflowStep = {
+  stage: string
+  title: string
+  extensions: { name: string; action: string }[]
+  commands: string[]
+}
+
+const extWorkflowStepsRu: ExtWorkflowStep[] = [
+  {
+    stage: '01',
+    title: 'Открываем проект',
+    extensions: [
+      { name: 'Project Manager', action: 'Переключение между локальными проектами — один клик в боковой панели.' },
+      { name: 'GitHub Repositories', action: 'Можно открыть чужой репозиторий без clone, чтобы быстро посмотреть код.' },
+    ],
+    commands: ['git clone https://github.com/org/app.git', 'code app/'],
+  },
+  {
+    stage: '02',
+    title: 'Создаём ветку и пишем код',
+    extensions: [
+      { name: 'GitLens', action: 'Наведите на строку — увидите автора, дату и коммит последнего изменения (inline blame).' },
+      { name: 'Git Graph', action: 'Откройте палитру → Git Graph: View Git Graph — визуально видно все ветки и мержи.' },
+      { name: 'Code Spell Checker', action: 'Автоматически подчёркивает опечатки в коде, комментариях и именах веток.' },
+    ],
+    commands: ['git switch -c feature/payment', '# … пишем код …'],
+  },
+  {
+    stage: '03',
+    title: 'Коммитим изменения',
+    extensions: [
+      { name: 'Conventional Commits', action: 'Запускается из Command Palette: помогает выбрать тип (feat/fix/chore), scope и описание по шаблону.' },
+      { name: 'Code Spell Checker', action: 'Проверяет текст сообщения коммита на опечатки перед отправкой.' },
+      { name: 'GitLens', action: 'В боковой панели видно staged/unstaged файлы с подробным diff.' },
+    ],
+    commands: ['git add .', 'git commit -m "feat(payment): add Stripe integration"'],
+  },
+  {
+    stage: '04',
+    title: 'Пушим ветку и открываем PR',
+    extensions: [
+      { name: 'GitHub Pull Requests', action: 'Создание PR прямо из VS Code: заголовок, описание, ревьюеры, labels — всё в одном окне.' },
+      { name: 'GitLens', action: 'Сравнение вашей ветки с main: видно все изменения перед открытием PR.' },
+    ],
+    commands: ['git push -u origin feature/payment', '# → VS Code: GitHub Pull Requests → Create Pull Request'],
+  },
+  {
+    stage: '05',
+    title: 'Ревью и обсуждение',
+    extensions: [
+      { name: 'GitHub Pull Requests', action: 'Checkout чужого PR одной кнопкой, комментарии прямо в редакторе рядом с кодом.' },
+      { name: 'GitLens', action: 'История файла и blame помогают понять контекст изменений при ревью.' },
+      { name: 'Git Graph', action: 'Видно, от какого коммита main отвелась ветка и что изменилось с тех пор.' },
+    ],
+    commands: ['gh pr checkout 42', '# → оставляем комментарии → Approve / Request changes'],
+  },
+  {
+    stage: '06',
+    title: 'CI/CD проверки',
+    extensions: [
+      { name: 'GitHub Actions', action: 'Просмотр статусов workflow, логов конкретных шагов и re-run упавших сборок — не выходя из VS Code.' },
+    ],
+    commands: ['# CI запускается автоматически', 'gh run list --branch feature/payment', 'gh run view <id> --log-failed'],
+  },
+  {
+    stage: '07',
+    title: 'Мержим PR и убираем ветку',
+    extensions: [
+      { name: 'GitHub Pull Requests', action: 'Кнопка Merge прямо в панели расширения — выбор стратегии (squash/rebase/merge commit).' },
+      { name: 'Git Graph', action: 'После мержа видно, как коммиты влились в main — красивый визуальный граф.' },
+      { name: 'GitLens', action: 'Interactive rebase перед мержем, если хотите причесать историю.' },
+    ],
+    commands: ['# → Merge PR → Delete branch', 'git fetch --prune', 'git switch main', 'git pull'],
+  },
+]
+
+const extWorkflowStepsEn: ExtWorkflowStep[] = [
+  {
+    stage: '01',
+    title: 'Open the project',
+    extensions: [
+      { name: 'Project Manager', action: 'Switch between local projects — one click in the sidebar.' },
+      { name: 'GitHub Repositories', action: 'Open someone else\u2019s repo without cloning to quickly browse code.' },
+    ],
+    commands: ['git clone https://github.com/org/app.git', 'code app/'],
+  },
+  {
+    stage: '02',
+    title: 'Create a branch & write code',
+    extensions: [
+      { name: 'GitLens', action: 'Hover on a line to see the author, date and commit of the last change (inline blame).' },
+      { name: 'Git Graph', action: 'Command Palette \u2192 Git Graph: View Git Graph \u2014 see all branches and merges visually.' },
+      { name: 'Code Spell Checker', action: 'Automatically underlines typos in code, comments and branch names.' },
+    ],
+    commands: ['git switch -c feature/payment', '# \u2026 write code \u2026'],
+  },
+  {
+    stage: '03',
+    title: 'Commit changes',
+    extensions: [
+      { name: 'Conventional Commits', action: 'Launched from Command Palette: helps pick the type (feat/fix/chore), scope and description by template.' },
+      { name: 'Code Spell Checker', action: 'Checks the commit message text for typos before sending.' },
+      { name: 'GitLens', action: 'Sidebar shows staged/unstaged files with detailed diffs.' },
+    ],
+    commands: ['git add .', 'git commit -m "feat(payment): add Stripe integration"'],
+  },
+  {
+    stage: '04',
+    title: 'Push the branch & open a PR',
+    extensions: [
+      { name: 'GitHub Pull Requests', action: 'Create a PR right from VS Code: title, description, reviewers, labels \u2014 all in one window.' },
+      { name: 'GitLens', action: 'Compare your branch with main: see all changes before opening the PR.' },
+    ],
+    commands: ['git push -u origin feature/payment', '# \u2192 VS Code: GitHub Pull Requests \u2192 Create Pull Request'],
+  },
+  {
+    stage: '05',
+    title: 'Review & discussion',
+    extensions: [
+      { name: 'GitHub Pull Requests', action: 'Checkout someone\u2019s PR with one button, comment right in the editor next to the code.' },
+      { name: 'GitLens', action: 'File history and blame help understand the context of changes during review.' },
+      { name: 'Git Graph', action: 'See which main commit the branch forked from and what changed since.' },
+    ],
+    commands: ['gh pr checkout 42', '# \u2192 leave comments \u2192 Approve / Request changes'],
+  },
+  {
+    stage: '06',
+    title: 'CI/CD checks',
+    extensions: [
+      { name: 'GitHub Actions', action: 'View workflow statuses, logs of specific steps and re-run failed builds \u2014 without leaving VS Code.' },
+    ],
+    commands: ['# CI runs automatically', 'gh run list --branch feature/payment', 'gh run view <id> --log-failed'],
+  },
+  {
+    stage: '07',
+    title: 'Merge the PR & clean up',
+    extensions: [
+      { name: 'GitHub Pull Requests', action: 'Merge button right in the extension panel \u2014 choose strategy (squash/rebase/merge commit).' },
+      { name: 'Git Graph', action: 'After merging you see how commits flowed into main \u2014 a beautiful visual graph.' },
+      { name: 'GitLens', action: 'Interactive rebase before merging if you want to tidy up the history.' },
+    ],
+    commands: ['# \u2192 Merge PR \u2192 Delete branch', 'git fetch --prune', 'git switch main', 'git pull'],
+  },
+]
+
 const VIZ = {
   'secret-leak': `<svg viewBox="0 0 320 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect x="18" y="22" width="84" height="66" rx="8" fill="#fff" stroke="#d8513b" stroke-width="2"/>
@@ -828,6 +977,81 @@ const VIZ = {
     <text x="208" y="62" font-size="9" fill="#586575">чисто ✓</text>
   </svg>`,
 } as const
+
+// ============================================================================
+// STRATEGY_VIZ — branch graph SVGs for each merge strategy
+// ============================================================================
+
+const STRATEGY_VIZ = [
+  // 0: Merge commit
+  `<svg viewBox="0 0 340 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <text x="8" y="16" font-size="10" fill="#1e8a6b" font-weight="800">main</text>
+    <line x1="40" y1="30" x2="320" y2="30" stroke="#1e8a6b" stroke-width="3"/>
+    <circle cx="60" cy="30" r="6" fill="#1e8a6b"/>
+    <circle cx="120" cy="30" r="6" fill="#1e8a6b"/>
+    <circle cx="280" cy="30" r="9" fill="#fff" stroke="#1e8a6b" stroke-width="2.5"/>
+    <text x="280" y="34" text-anchor="middle" font-size="8" font-weight="900" fill="#1e8a6b">M</text>
+    <text x="280" y="16" text-anchor="middle" font-size="8" fill="#1e8a6b">merge commit</text>
+    <text x="8" y="76" font-size="10" fill="#4a90e2" font-weight="800">feature</text>
+    <line x1="120" y1="80" x2="250" y2="80" stroke="#4a90e2" stroke-width="2.5"/>
+    <circle cx="150" cy="80" r="5" fill="#4a90e2"/>
+    <text x="150" y="100" text-anchor="middle" font-size="8" fill="#586575">A</text>
+    <circle cx="190" cy="80" r="5" fill="#4a90e2"/>
+    <text x="190" y="100" text-anchor="middle" font-size="8" fill="#586575">B</text>
+    <circle cx="230" cy="80" r="5" fill="#4a90e2"/>
+    <text x="230" y="100" text-anchor="middle" font-size="8" fill="#586575">C</text>
+    <path d="M120 30 Q 125 55 150 80" stroke="#4a90e2" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+    <path d="M230 80 Q 260 55 280 30" stroke="#4a90e2" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+  </svg>`,
+
+  // 1: Squash and merge
+  `<svg viewBox="0 0 340 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <text x="8" y="16" font-size="10" fill="#1e8a6b" font-weight="800">main</text>
+    <line x1="40" y1="30" x2="320" y2="30" stroke="#1e8a6b" stroke-width="3"/>
+    <circle cx="60" cy="30" r="6" fill="#1e8a6b"/>
+    <circle cx="120" cy="30" r="6" fill="#1e8a6b"/>
+    <circle cx="240" cy="30" r="8" fill="#1e8a6b"/>
+    <text x="240" y="16" text-anchor="middle" font-size="8" fill="#1e8a6b" font-weight="700">A+B+C</text>
+    <text x="8" y="76" font-size="10" fill="#4a90e2" font-weight="800">feature</text>
+    <line x1="120" y1="80" x2="250" y2="80" stroke="#4a90e2" stroke-width="2" stroke-dasharray="4 3" opacity="0.5"/>
+    <circle cx="150" cy="80" r="5" fill="#4a90e2" opacity="0.4"/>
+    <text x="150" y="100" text-anchor="middle" font-size="8" fill="#586575" opacity="0.5">A</text>
+    <circle cx="190" cy="80" r="5" fill="#4a90e2" opacity="0.4"/>
+    <text x="190" y="100" text-anchor="middle" font-size="8" fill="#586575" opacity="0.5">B</text>
+    <circle cx="230" cy="80" r="5" fill="#4a90e2" opacity="0.4"/>
+    <text x="230" y="100" text-anchor="middle" font-size="8" fill="#586575" opacity="0.5">C</text>
+    <path d="M120 30 Q 125 55 150 80" stroke="#4a90e2" stroke-width="1.5" fill="none" stroke-dasharray="4 3" opacity="0.4"/>
+    <path d="M190 80 Q 220 50 240 30" stroke="#1e8a6b" stroke-width="2" fill="none"/>
+    <polygon points="237,34 243,28 245,38" fill="#1e8a6b"/>
+    <text x="230" y="58" font-size="8" fill="#1e8a6b" font-weight="700">squash</text>
+  </svg>`,
+
+  // 2: Rebase and merge
+  `<svg viewBox="0 0 340 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <text x="8" y="16" font-size="10" fill="#1e8a6b" font-weight="800">main</text>
+    <line x1="40" y1="30" x2="320" y2="30" stroke="#1e8a6b" stroke-width="3"/>
+    <circle cx="60" cy="30" r="6" fill="#1e8a6b"/>
+    <circle cx="120" cy="30" r="6" fill="#1e8a6b"/>
+    <circle cx="180" cy="30" r="6" fill="#4a90e2"/>
+    <text x="180" y="16" text-anchor="middle" font-size="8" fill="#4a90e2" font-weight="700">A'</text>
+    <circle cx="230" cy="30" r="6" fill="#4a90e2"/>
+    <text x="230" y="16" text-anchor="middle" font-size="8" fill="#4a90e2" font-weight="700">B'</text>
+    <circle cx="280" cy="30" r="6" fill="#4a90e2"/>
+    <text x="280" y="16" text-anchor="middle" font-size="8" fill="#4a90e2" font-weight="700">C'</text>
+    <text x="8" y="76" font-size="10" fill="#cdd5dd" font-weight="800">feature</text>
+    <line x1="120" y1="80" x2="250" y2="80" stroke="#cdd5dd" stroke-width="2" stroke-dasharray="4 3"/>
+    <circle cx="150" cy="80" r="5" fill="#cdd5dd"/>
+    <text x="150" y="100" text-anchor="middle" font-size="8" fill="#cdd5dd">A</text>
+    <circle cx="190" cy="80" r="5" fill="#cdd5dd"/>
+    <text x="190" y="100" text-anchor="middle" font-size="8" fill="#cdd5dd">B</text>
+    <circle cx="230" cy="80" r="5" fill="#cdd5dd"/>
+    <text x="230" y="100" text-anchor="middle" font-size="8" fill="#cdd5dd">C</text>
+    <path d="M150 75 L180 35" stroke="#4a90e2" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+    <path d="M190 75 L230 35" stroke="#4a90e2" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+    <path d="M230 75 L280 35" stroke="#4a90e2" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+    <text x="290" y="106" font-size="8" fill="#586575" font-weight="700">линейная история</text>
+  </svg>`,
+]
 
 // ============================================================================
 // BASICS — концепт-карточки для новичков
@@ -1890,6 +2114,7 @@ const glossaryRu: GlossaryItem[] = [
 const commands = (lang === 'en' ? commandsEn : commandsRu) as unknown as Command[]
 const workflows = (lang === 'en' ? workflowsEn : workflowsRu) as unknown as WorkflowStep[]
 const extensions = (lang === 'en' ? extensionsEn : extensionsRu) as unknown as readonly (readonly [string, string])[]
+const extWorkflowSteps = (lang === 'en' ? extWorkflowStepsEn : extWorkflowStepsRu) as ExtWorkflowStep[]
 const concepts = (lang === 'en' ? conceptsEn : conceptsRu) as unknown as Concept[]
 const tracks = (lang === 'en' ? tracksEn : tracksRu) as unknown as Track[]
 const cases = (lang === 'en' ? casesEn : casesRu) as unknown as Case[]
@@ -2025,8 +2250,9 @@ $ gh pr create --fill --base main</code></pre>
         <p>${t().intro.strategies}</p>
       </div>
       <div class="strategy-grid">
-        ${strategies.map((s) => `
+        ${strategies.map((s, i) => `
           <article class="strategy-card">
+            <div class="strategy-viz">${STRATEGY_VIZ[i]}</div>
             <h3>${s.name}</h3>
             <p class="strategy-summary">${s.summary}</p>
             <p class="strategy-when"><strong>${t().strategyWhen}</strong> ${s.when}</p>
@@ -2073,6 +2299,35 @@ $ gh pr create --fill --base main</code></pre>
             <div class="extension-icon">${name.split(' ').map((word) => word[0]).slice(0, 2).join('')}</div>
             <h3>${name}</h3>
             <p>${text}</p>
+          </article>
+        `).join('')}
+      </div>
+    </section>
+
+    <section class="section" id="ext-workflow">
+      <div class="section__head">
+        <p class="eyebrow">${t().eyebrows.extWorkflow}</p>
+        <h2>${t().h2.extWorkflow}</h2>
+        <p>${t().intro.extWorkflow}</p>
+      </div>
+      <div class="ext-wf-timeline">
+        ${extWorkflowSteps.map((step) => `
+          <article class="ext-wf-step">
+            <div class="ext-wf-stage">${step.stage}</div>
+            <div class="ext-wf-body">
+              <h3 class="ext-wf-title">${step.title}</h3>
+              <div class="ext-wf-extensions">
+                ${step.extensions.map((ext) => `
+                  <div class="ext-wf-ext">
+                    <span class="ext-wf-ext-badge">${ext.name}</span>
+                    <span class="ext-wf-ext-action">${ext.action}</span>
+                  </div>
+                `).join('')}
+              </div>
+              <div class="ext-wf-commands">
+                ${step.commands.map((cmd) => `<code>${cmd}</code>`).join('')}
+              </div>
+            </div>
           </article>
         `).join('')}
       </div>
@@ -2380,6 +2635,11 @@ const sideEntries: SideEntry[] = [
   { id: 'strategies', label: t().nav.strategies },
   { id: 'safety', label: t().nav.safety },
   { id: 'extensions', label: t().nav.extensions },
+  {
+    id: 'ext-workflow',
+    label: t().nav.extWorkflow,
+    children: extWorkflowSteps.map((step) => ({ label: `${step.stage} \u2014 ${step.title}`, action: () => {} })),
+  },
   { id: 'glossary', label: t().nav.glossary },
   {
     id: 'tracks',
