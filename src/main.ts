@@ -487,6 +487,13 @@ const commandsRu: Command[] = [
     tip: 'Никогда не делайте обычный --force на общих ветках вроде main.',
     stage: 'pr',
   },
+  {
+    command: 'git fetch --prune',
+    meaning: 'Забирает обновления с remote и удаляет устаревшие remote-tracking ветки, которых уже нет на GitHub.',
+    when: 'Периодически, чтобы список веток не зарастал мусором от давно вмерженных PR.',
+    tip: 'Настройте git config --global fetch.prune true — тогда prune будет происходить при каждом fetch/pull автоматически.',
+    stage: 'daily',
+  },
 ]
 
 const workflowsRu: WorkflowStep[] = [
@@ -801,6 +808,24 @@ const VIZ = {
     <rect x="208" y="46" width="86" height="36" rx="6" fill="#fff" stroke="#1e8a6b" stroke-width="1.5"/>
     <text x="251" y="62" text-anchor="middle" font-size="10" font-weight="700" fill="#1e8a6b">vendor/lib/</text>
     <text x="251" y="76" text-anchor="middle" font-size="9" fill="#586575">@ a1b2c3d</text>
+  </svg>`,
+
+  'prune': `<svg viewBox="0 0 320 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <text x="8" y="20" font-size="10" fill="#586575" font-weight="700">git branch -r</text>
+    <rect x="14" y="28" width="130" height="72" rx="8" fill="#fdecea" stroke="#d8513b" stroke-width="1.5"/>
+    <text x="26" y="46" font-size="9" fill="#d8513b">origin/feature-a</text>
+    <text x="26" y="60" font-size="9" fill="#d8513b">origin/feature-b</text>
+    <text x="26" y="74" font-size="9" fill="#d8513b">origin/fix-typo</text>
+    <text x="26" y="88" font-size="9" fill="#586575">origin/main</text>
+    <text x="110" y="44" font-size="9" fill="#d8513b" font-weight="700">✗</text>
+    <text x="110" y="58" font-size="9" fill="#d8513b" font-weight="700">✗</text>
+    <text x="110" y="72" font-size="9" fill="#d8513b" font-weight="700">✗</text>
+    <path d="M152 64 L182 64" stroke="#1e8a6b" stroke-width="2"/>
+    <polygon points="180,59 190,64 180,69" fill="#1e8a6b"/>
+    <text x="166" y="56" text-anchor="middle" font-size="9" fill="#1e8a6b" font-weight="700">prune</text>
+    <rect x="196" y="28" width="110" height="72" rx="8" fill="#f0f8f5" stroke="#1e8a6b" stroke-width="2"/>
+    <text x="208" y="46" font-size="9" fill="#1e8a6b" font-weight="600">origin/main</text>
+    <text x="208" y="62" font-size="9" fill="#586575">чисто ✓</text>
   </svg>`,
 } as const
 
@@ -1758,6 +1783,15 @@ const casesRu: Case[] = [
     commands: ['git submodule update --init --recursive', 'git submodule foreach git pull origin main'],
     tag: 'team',
     viz: 'submodule',
+  },
+  {
+    icon: '🧹',
+    title: 'Устаревшие remote-tracking ветки засоряют список',
+    problem: 'После мержа десятка PR ветки удалены на GitHub, но git branch -r до сих пор показывает origin/feature-xxx. Непонятно, какие ветки реально актуальны.',
+    solution: 'Выполните git fetch --prune — удалятся все remote-tracking ссылки, которых уже нет на сервере. Чтобы это происходило автоматически при каждом fetch/pull, настройте глобальный параметр fetch.prune. Локальные ветки (если остались) удалите отдельно через git branch -d.',
+    commands: ['git fetch --prune', 'git config --global fetch.prune true', 'git branch -d feature/login'],
+    tag: 'team',
+    viz: 'prune',
   },
 ]
 

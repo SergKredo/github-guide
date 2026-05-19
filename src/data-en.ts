@@ -247,6 +247,13 @@ export const commandsEn = [
     tip: 'Never use plain --force on shared branches like main.',
     stage: 'pr',
   },
+  {
+    command: 'git fetch --prune',
+    meaning: 'Fetches updates from the remote and removes stale remote-tracking branches that no longer exist on GitHub.',
+    when: 'Periodically, so the branch list doesn\u2019t accumulate leftovers from merged PRs.',
+    tip: 'Set git config --global fetch.prune true \u2014 then prune happens automatically on every fetch/pull.',
+    stage: 'daily',
+  },
 ] as const
 
 export const workflowsEn = [
@@ -935,6 +942,15 @@ export const casesEn = [
     commands: ['git submodule update --init --recursive', 'git submodule foreach git pull origin main'],
     tag: 'team',
     viz: 'submodule',
+  },
+  {
+    icon: '\uD83E\uDDF9',
+    title: 'Stale remote-tracking branches cluttering the list',
+    problem: 'After merging a dozen PRs, the branches are deleted on GitHub, but git branch -r still shows origin/feature-xxx. It\u2019s unclear which branches are actually active.',
+    solution: 'Run git fetch --prune \u2014 it removes all remote-tracking refs that no longer exist on the server. To make this automatic on every fetch/pull, set the global fetch.prune option. Delete leftover local branches separately with git branch -d.',
+    commands: ['git fetch --prune', 'git config --global fetch.prune true', 'git branch -d feature/login'],
+    tag: 'team',
+    viz: 'prune',
   },
 ] as const
 
