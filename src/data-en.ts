@@ -76,7 +76,7 @@ export const commandsEn = [
     command: 'gh pr create --fill --base main',
     meaning: 'Opens a pull request via GitHub CLI, filling title and body from your commits.',
     when: 'When the task is ready for review.',
-    tip: 'If GitHub CLI is not installed, open the PR via the GitHub site or the GitHub Pull Requests extension.',
+    tip: 'If GitHub CLI is not installed, open the PR (pull request) via the GitHub site or the GitHub Pull Requests extension.',
     stage: 'pr',
   },
   {
@@ -89,7 +89,7 @@ export const commandsEn = [
   {
     command: 'git rebase origin/main',
     meaning: 'Replays your commits on top of the latest main.',
-    when: 'When the PR has fallen behind the main branch and your team prefers linear history.',
+    when: 'When the PR (pull request) has fallen behind the main branch and your team prefers linear history.',
     tip: 'Don\u2019t rebase a published shared branch without coordinating with the team.',
     stage: 'pr',
   },
@@ -187,14 +187,14 @@ export const commandsEn = [
   {
     command: 'git branch -d feature/login-form',
     meaning: 'Deletes a local branch if it has already been merged.',
-    when: 'After the PR is merged and the branch is no longer needed.',
+    when: 'After the PR (pull request) is merged and the branch is no longer needed.',
     tip: 'Use -D to delete a branch that has not been merged yet (carefully).',
     stage: 'branch',
   },
   {
     command: 'git push origin --delete feature/login-form',
     meaning: 'Deletes the branch from the remote repository on GitHub.',
-    when: 'After merging a PR, if auto-delete branches is not enabled.',
+    when: 'After merging a PR (pull request), if auto-delete branches is not enabled.',
     tip: 'Many teams enable "Automatically delete head branches" in repository settings.',
     stage: 'branch',
   },
@@ -243,14 +243,14 @@ export const commandsEn = [
   {
     command: 'git push --force-with-lease',
     meaning: 'A safe force-push: it will not overwrite somebody else\u2019s commits on the branch.',
-    when: 'After rebasing or amending a published PR branch.',
+    when: 'After rebasing or amending a published PR (pull request) branch.',
     tip: 'Never use plain --force on shared branches like main.',
     stage: 'pr',
   },
   {
     command: 'git fetch --prune',
     meaning: 'Fetches updates from the remote and removes stale remote-tracking branches that no longer exist on GitHub.',
-    when: 'Periodically, so the branch list doesn\u2019t accumulate leftovers from merged PRs.',
+    when: 'Periodically, so the branch list doesn\u2019t accumulate leftovers from merged PRs (pull requests).',
     tip: 'Set git config --global fetch.prune true \u2014 then prune happens automatically on every fetch/pull.',
     stage: 'daily',
   },
@@ -271,13 +271,13 @@ export const workflowsEn = [
   },
   {
     title: 'Pull request and review',
-    role: 'PR author + reviewer',
+    role: 'PR (pull request) author + reviewer',
     body: 'The author describes context, attaches screenshots and links the issue. The reviewer checks behavior, tests and readability. Discussion happens in line-level comments.',
     commands: ['gh pr create --fill --base main', 'gh pr view --web', 'git commit -m "Address review comments"', 'git push'],
   },
   {
-    title: 'Conflict while updating a PR',
-    role: 'PR author',
+    title: 'Conflict while updating a PR (pull request)',
+    role: 'PR (pull request) author',
     body: 'If main has moved on, the author pulls the changes, resolves the conflict in the VS Code Merge Editor, runs checks and re-pushes the branch.',
     commands: ['git fetch origin', 'git rebase origin/main', 'git status', 'npm test', 'git push --force-with-lease'],
   },
@@ -290,18 +290,18 @@ export const workflowsEn = [
   {
     title: 'Tagged version release',
     role: 'Release manager',
-    body: 'After all PRs land in main, the team creates a versioned tag, publishes a GitHub Release with notes, and GitHub Actions builds and ships the artifact.',
+    body: 'After all PRs (pull requests) land in main, the team creates a versioned tag, publishes a GitHub Release with notes, and GitHub Actions builds and ships the artifact.',
     commands: ['git checkout main', 'git pull --ff-only', 'git tag -a v1.4.0 -m "Release 1.4.0"', 'git push origin v1.4.0', 'gh release create v1.4.0 --generate-notes'],
   },
   {
     title: 'Working from a fork in open source',
     role: 'External contributor',
-    body: 'They fork the repository into their account, add the original as upstream, regularly sync main and send PRs back to the original repository.',
+    body: 'They fork the repository into their account, add the original as upstream, regularly sync main and send PRs (pull requests) back to the original repository.',
     commands: ['git clone https://github.com/me/lib.git', 'git remote add upstream https://github.com/original/lib.git', 'git fetch upstream', 'git rebase upstream/main', 'git push --force-with-lease'],
   },
   {
     title: 'Multi-round review with fixup commits',
-    role: 'PR author',
+    role: 'PR (pull request) author',
     body: 'Review changes are recorded as separate fixup commits so the reviewer can see each delta. Before merging, autosquash-rebase joins them into one neat commit.',
     commands: ['git commit --fixup HEAD', 'git push', 'git fetch origin', 'git rebase -i --autosquash origin/main', 'git push --force-with-lease'],
   },
@@ -314,14 +314,14 @@ export const workflowsEn = [
 ] as const
 
 export const extensionsEn = [
-  ['GitHub Pull Requests', 'Work with PRs and issues right inside VS Code: check out PRs, comments, reviews, check statuses.'],
+  ['GitHub Pull Requests', 'Work with PRs (pull requests) and issues right inside VS Code: check out PRs (pull requests), comments, reviews, check statuses.'],
   ['GitLens', 'Line history, change authors, branch comparison, commit navigation.'],
   ['Git Graph', 'Visual graph of branches, merges, rebases and project history.'],
   ['GitHub Actions', 'View workflows, CI logs and build statuses.'],
   ['GitHub Repositories', 'Open repositories without a full clone \u2014 handy for quick reading and browsing.'],
   ['Project Manager', 'Quickly switch between several local projects.'],
   ['Conventional Commits', 'Suggests message formats (feat, fix, chore) and simplifies changelog generation.'],
-  ['Code Spell Checker', 'Catches typos in commits, branch names and PR descriptions.'],
+  ['Code Spell Checker', 'Catches typos in commits, branch names and PR (pull request) descriptions.'],
 ] as const
 
 export const conceptsEn = [
@@ -419,19 +419,19 @@ export const conceptsEn = [
     id: 'pull-request',
     title: 'Pull Request (PR)',
     short: 'A request to "take my code into the main project".',
-    analogy: 'You wrote an article for a magazine and sent it to the editors with a note: "please publish". The editors read it, leave notes, you revise, and eventually the article ships. A PR is the same thing for code.',
-    detail: 'A PR is a page on GitHub comparing two branches: yours and the target one (usually `main`). It shows the file diff, line-by-line discussions, CI statuses, and a "Merge" button. A good PR is small (200\u2013400 lines) with a clear description following a "why / what / how to test" template.',
+    analogy: 'You wrote an article for a magazine and sent it to the editors with a note: "please publish". The editors read it, leave notes, you revise, and eventually the article ships. A PR (pull request) is the same thing for code.',
+    detail: 'A PR (pull request) is a page on GitHub comparing two branches: yours and the target one (usually `main`). It shows the file diff, line-by-line discussions, CI statuses, and a "Merge" button. A good PR (pull request) is small (200\u2013400 lines) with a clear description following a "why / what / how to test" template.',
     practice: 'After pushing a new branch, GitHub offers "Compare & pull request". Or from VS Code: command "GitHub Pull Requests: Create Pull Request".',
-    pitfall: 'A 3000-line PR with no description, mixing features and refactors. Nobody can review that properly.',
+    pitfall: 'A 3000-line PR (pull request) with no description, mixing features and refactors. Nobody can review that properly.',
     viz: 'pull-request',
   },
   {
     id: 'code-review',
     title: 'Code Review',
-    short: 'Teammates read your PR before merging.',
+    short: 'Teammates read your PR (pull request) before merging.',
     analogy: 'A copy editor and editor read your article before publication. They highlight typos, awkward phrasing, suggest rewrites. Their goal isn\u2019t to humiliate you \u2014 it\u2019s to make the text better.',
     detail: 'A reviewer sees the diff, leaves comments on specific lines, and sets a status: Comment (just thoughts), Approve (good to merge), Request Changes (needs fixing). Good practice: the author asks 1\u20132 people for review, replies to each comment ("fixed" / "I disagree because\u2026"), doesn\u2019t take criticism personally.',
-    practice: 'In VS Code open the PR via GitHub Pull Requests, click "Start Review", then click lines and leave notes.',
+    practice: 'In VS Code open the PR (pull request) via GitHub Pull Requests, click "Start Review", then click lines and leave notes.',
     pitfall: 'A reviewer writing "I don\u2019t like it" without explanation. Or the author getting offended and arguing for the sake of it. A healthy team discusses options, not personalities.',
     viz: 'code-review',
   },
@@ -450,8 +450,8 @@ export const conceptsEn = [
     title: 'Fork',
     short: 'Your personal copy of someone else\u2019s repo on GitHub.',
     analogy: 'You want to add a chapter to someone else\u2019s book but don\u2019t own it. You photocopy the whole book, add your chapter, then go to the author saying "please take my chapter into the original". The author decides.',
-    detail: 'Fork is a button on a repo page. After clicking, a copy `myname/repo` appears under your account, which you can push to. To propose changes back to the original, you open a PR from your fork. Used in open source: you can\u2019t write to `facebook/react`, but you can fork it and send a PR. Also at work, when you don\u2019t have push rights to a protected branch.',
-    practice: 'On any open-source repo page \u2014 the Fork button. Then `git clone <your-fork>`, edit, push, open a PR.',
+    detail: 'Fork is a button on a repo page. After clicking, a copy `myname/repo` appears under your account, which you can push to. To propose changes back to the original, you open a PR (pull request) from your fork. Used in open source: you can\u2019t write to `facebook/react`, but you can fork it and send a PR (pull request). Also at work, when you don\u2019t have push rights to a protected branch.',
+    practice: 'On any open-source repo page \u2014 the Fork button. Then `git clone <your-fork>`, edit, push, open a PR (pull request).',
     pitfall: 'You forked a year ago and forgot it. To sync: add `upstream` (the original) and regularly `git fetch upstream && git rebase upstream/main`.',
     viz: 'fork',
   },
@@ -540,7 +540,7 @@ export const tracksEn = [
     intro: 'How to propose a change to someone else\u2019s project, sync with the original and not get lost in forks.',
     exercises: [
       {
-        title: 'Make your first PR to someone else\u2019s repo',
+        title: 'Make your first PR (pull request) to someone else\u2019s repo',
         goal: 'Walk the full cycle: fork \u2192 clone \u2192 branch \u2192 PR.',
         steps: [
           'Find a repo with the `good first issue` tag (e.g. via github.com/explore)',
@@ -550,7 +550,7 @@ export const tracksEn = [
           'Make the change, commit, `git push -u origin fix/typo-in-readme`',
           'On GitHub click "Compare & pull request", fill in the description',
         ],
-        done: 'The PR appears in the original repository with a number and Open status.',
+        done: 'The PR (pull request) appears in the original repository with a number and Open status.',
       },
       {
         title: 'Hook up upstream and sync the fork',
@@ -565,15 +565,15 @@ export const tracksEn = [
         done: '`git log --oneline` shows all the latest commits from the original.',
       },
       {
-        title: 'Respond to maintainer feedback in your PR',
-        goal: 'Understand iterative PR refinement.',
+        title: 'Respond to maintainer feedback in your PR (pull request)',
+        goal: 'Understand iterative PR (pull request) refinement.',
         steps: [
           'In the same feature branch, address the comments',
           'Commit: `git commit -m "review: rename variable"`',
-          '`git push` \u2014 the PR updates automatically',
+          '`git push` \u2014 the PR (pull request) updates automatically',
           'In the discussion answer each comment or click Resolve',
         ],
-        done: 'All threads are Resolved, the PR is merged.',
+        done: 'All threads are Resolved, the PR (pull request) is merged.',
       },
       {
         title: 'Sign commits with GPG/SSH',
@@ -802,7 +802,7 @@ export const casesEn = [
   {
     icon: '\uD83D\uDD11',
     title: 'Committed .env with passwords',
-    problem: 'A PR is already open and API keys are visible in history. Reset is pointless \u2014 the secret is already on GitHub.',
+    problem: 'A PR (pull request) is already open and API keys are visible in history. Reset is pointless \u2014 the secret is already on GitHub.',
     solution: 'Revoke the token at the provider immediately, add .env to .gitignore, scrub history and force-push the branch. Warn the team: they will need to re-clone the repo.',
     commands: ['echo .env >> .gitignore', 'git rm --cached .env', 'git commit -m "Stop tracking .env"', 'git filter-repo --path .env --invert-paths', 'git push origin --force --all'],
     tag: 'security',
@@ -855,9 +855,9 @@ export const casesEn = [
   },
   {
     icon: '\uD83E\uDD1D',
-    title: 'PR grew huge and nobody wants to review it',
+    title: 'PR (pull request) grew huge and nobody wants to review it',
     problem: '300+ files, refactor and a new feature mixed together.',
-    solution: 'Split into stacked PRs: extract the refactor into its own branch, build the feature on top of it. PRs of 200\u2013400 lines each are reviewed several times faster.',
+    solution: 'Split into stacked PRs (pull requests): extract the refactor into its own branch, build the feature on top of it. PRs (pull requests) of 200\u2013400 lines each are reviewed several times faster.',
     commands: ['git switch -c refactor/extract-api main', 'git cherry-pick <refactor commits>', 'gh pr create --base main --title "Refactor API layer"', 'git switch -c feature/profile refactor/extract-api'],
     tag: 'team',
     viz: 'big-pr',
@@ -957,21 +957,21 @@ export const casesEn = [
 export const strategiesEn = [
   {
     name: 'Merge commit',
-    summary: 'Creates a separate merge commit and keeps every PR commit as is.',
+    summary: 'Creates a separate merge commit and keeps every PR (pull request) commit as is.',
     when: 'The team wants to see how the work on a feature actually went.',
     pros: ['Preserves the full history', 'Rewrites nothing', 'Review history stays clear'],
     cons: ['Lots of noise in git log', 'Non-linear history graph'],
   },
   {
     name: 'Squash and merge',
-    summary: 'Squashes all PR commits into one and adds it to main.',
-    when: 'The team wants linear history, 1 PR = 1 commit.',
+    summary: 'Squashes all PR (pull request) commits into one and adds it to main.',
+    when: 'The team wants linear history, 1 PR (pull request) = 1 commit.',
     pros: ['Clean linear main', 'Easy to revert a feature', 'WIP commits are hidden'],
     cons: ['Step-by-step history is lost', 'Authorship collapses to one person'],
   },
   {
     name: 'Rebase and merge',
-    summary: 'Rebases the PR commits on top of main without a merge commit.',
+    summary: 'Rebases the PR (pull request) commits on top of main without a merge commit.',
     when: 'The team wants linear history but keeps every commit.',
     pros: ['Perfectly linear graph', 'Commits stay separate', 'Easy to bisect for bugs'],
     cons: ['Author has to keep the branch clean', 'Conflicts are resolved step by step', 'Commit hashes change'],

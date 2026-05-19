@@ -23,14 +23,14 @@ document.documentElement.lang = lang
 const ui = {
   ru: {
     navAria: 'Основная навигация',
-    nav: { basics: 'Основы', start: 'Старт', commands: 'Команды', workflow: 'Workflow', cases: 'Случаи', strategies: 'Слияние', safety: 'Безопасность', extensions: 'Расширения', extWorkflow: 'Экстеншены в деле', glossary: 'Глоссарий', tracks: 'Треки' },
+    nav: { basics: 'Основы', start: 'Старт', commands: 'Команды', workflow: 'Workflow', cases: 'Случаи', strategies: 'Слияние', safety: 'Безопасность', extensions: 'Расширения', extWorkflow: 'Экстеншены в деле', flags: 'Флаги', glossary: 'Глоссарий', tracks: 'Треки' },
     heroEyebrow: 'GitHub + VS Code для команды',
     heroTitle: 'Гайд по GitHub с нуля до уверенного pull request',
     heroLead: 'Пошаговая инструкция для обычного пользователя: установка, команды Git, работа в VS Code, реальные командные процессы, ревью, конфликты и полезные расширения.',
     heroBtnStart: 'Начать с нуля',
     heroBtnFlow: 'Посмотреть workflow',
     terminalAria: 'Визуализация рабочего процесса GitHub',
-    eyebrows: { basics: '01 / основы', start: '02 / подготовка', commands: '03 / команды', workflow: '04 / командная работа', cases: '05 / из жизни', strategies: '06 / слияние PR', safety: '07 / безопасность и гигиена', extensions: '08 / VS Code', extWorkflow: '09 / экстеншены в деле', glossary: '10 / словарь', tracks: '11 / треки прокачки' },
+    eyebrows: { basics: '01 / основы', start: '02 / подготовка', commands: '03 / команды', workflow: '04 / командная работа', cases: '05 / из жизни', strategies: '06 / слияние PR (pull request)', safety: '07 / безопасность и гигиена', extensions: '08 / VS Code', extWorkflow: '09 / экстеншены в деле', flags: '10 / флаги команд', glossary: '11 / словарь', tracks: '12 / треки прокачки' },
     h2: {
       basics: 'Что есть что: основные понятия простыми словами',
       start: 'Что настроить перед первой задачей',
@@ -41,6 +41,7 @@ const ui = {
       safety: 'Что включить в любом репозитории',
       extensions: 'Расширения, которые помогают с GitHub',
       extWorkflow: 'Как расширения работают на каждом этапе',
+      flags: 'Все флаги Git-команд в одном месте',
       glossary: 'Глоссарий терминов',
       tracks: 'Четыре уровня от новичка до мейнтейнера',
     },
@@ -50,11 +51,12 @@ const ui = {
       commands: 'Выберите этап работы, чтобы увидеть команды, смысл и типичные ситуации применения.',
       workflow: 'Нажимайте на этапы, чтобы увидеть, кто что делает и какие команды используются.',
       cases: 'Сборник живых ситуаций: проблема, безопасное решение и точные команды. Нажмите на карточку, чтобы развернуть.',
-      strategies: 'GitHub даёт три способа слить PR. Выбор влияет на историю, revert и разбор проблем.',
+      strategies: 'GitHub даёт три способа слить PR (pull request). Выбор влияет на историю, revert и разбор проблем.',
       safety: 'Эти вещи занимают один вечер на настройку, но экономят недели на разборе проблем.',
-      extensions: 'Это не обязательный набор, но он сильно упрощает PR, историю, CI и навигацию по проектам.',
-      extWorkflow: 'Каждый этап Git-процесса — от первого clone до мержа PR — покрывается конкретным расширением. Ниже показано, где именно каждое из них включается в работу.',
-      glossary: 'Чтобы не теряться в разговорах о "PR", "upstream" и "detached HEAD". Начните вводить термин, чтобы отфильтровать.',
+      extensions: 'Это не обязательный набор, но он сильно упрощает PR (pull request), историю, CI и навигацию по проектам.',
+      extWorkflow: 'Каждый этап Git-процесса — от первого clone до мержа PR (pull request) — покрывается конкретным расширением. Ниже показано, где именно каждое из них включается в работу.',
+      flags: 'Команды Git принимают десятки флагов. Здесь собраны самые полезные — сгруппированы по командам, с пояснениями и примерами.',
+      glossary: 'Чтобы не теряться в разговорах о "PR (pull request)", "upstream" и "detached HEAD". Начните вводить термин, чтобы отфильтровать.',
       tracks: 'Пошаговые упражнения. Не переходите на следующий уровень, пока не выполнили все из текущего — каждый базируется на предыдущем.',
     },
     setupCards: [
@@ -102,14 +104,14 @@ const ui = {
   },
   en: {
     navAria: 'Main navigation',
-    nav: { basics: 'Basics', start: 'Setup', commands: 'Commands', workflow: 'Workflow', cases: 'Cases', strategies: 'Merging', safety: 'Safety', extensions: 'Extensions', extWorkflow: 'Extensions in action', glossary: 'Glossary', tracks: 'Tracks' },
+    nav: { basics: 'Basics', start: 'Setup', commands: 'Commands', workflow: 'Workflow', cases: 'Cases', strategies: 'Merging', safety: 'Safety', extensions: 'Extensions', extWorkflow: 'Extensions in action', flags: 'Flags', glossary: 'Glossary', tracks: 'Tracks' },
     heroEyebrow: 'GitHub + VS Code for teams',
     heroTitle: 'A GitHub guide from zero to confident pull requests',
     heroLead: 'A step-by-step guide for an everyday user: install, Git commands, working in VS Code, real team processes, reviews, conflicts and useful extensions.',
     heroBtnStart: 'Start from scratch',
     heroBtnFlow: 'See the workflow',
     terminalAria: 'GitHub workflow visualization',
-    eyebrows: { basics: '01 / basics', start: '02 / setup', commands: '03 / commands', workflow: '04 / teamwork', cases: '05 / from real life', strategies: '06 / merging a PR', safety: '07 / safety & hygiene', extensions: '08 / VS Code', extWorkflow: '09 / extensions in action', glossary: '10 / glossary', tracks: '11 / leveling tracks' },
+    eyebrows: { basics: '01 / basics', start: '02 / setup', commands: '03 / commands', workflow: '04 / teamwork', cases: '05 / from real life', strategies: '06 / merging a PR', safety: '07 / safety & hygiene', extensions: '08 / VS Code', extWorkflow: '09 / extensions in action', flags: '10 / command flags', glossary: '11 / glossary', tracks: '12 / leveling tracks' },
     h2: {
       basics: 'What is what: core concepts in plain words',
       start: 'What to set up before your first task',
@@ -120,6 +122,7 @@ const ui = {
       safety: 'What to enable in any repository',
       extensions: 'Extensions that help with GitHub',
       extWorkflow: 'How extensions fit into each workflow stage',
+      flags: 'All Git command flags in one place',
       glossary: 'Glossary of terms',
       tracks: 'Four levels from beginner to maintainer',
     },
@@ -133,6 +136,7 @@ const ui = {
       safety: 'These take an evening to set up but save weeks of incident analysis later.',
       extensions: 'Not strictly required, but they make PRs, history, CI and project navigation much easier.',
       extWorkflow: 'Every stage of the Git process — from initial clone to merging a PR — is covered by a specific extension. Below you can see where each one enters the workflow.',
+      flags: 'Git commands accept dozens of flags. Here are the most useful ones — grouped by command, with explanations and examples.',
       glossary: 'So you don\u2019t get lost in talk about "PR", "upstream" and "detached HEAD". Start typing a term to filter.',
       tracks: 'Step-by-step exercises. Do not move to the next level until you finish the current one — each builds on the previous.',
     },
@@ -320,7 +324,7 @@ const commandsRu: Command[] = [
     command: 'gh pr create --fill --base main',
     meaning: 'Создает pull request через GitHub CLI, заполняя заголовок и описание из коммитов.',
     when: 'Когда задача готова к ревью.',
-    tip: 'Если GitHub CLI не установлен, откройте PR через сайт GitHub или расширение GitHub Pull Requests.',
+    tip: 'Если GitHub CLI не установлен, откройте PR (pull request) через сайт GitHub или расширение GitHub Pull Requests.',
     stage: 'pr',
   },
   {
@@ -333,7 +337,7 @@ const commandsRu: Command[] = [
   {
     command: 'git rebase origin/main',
     meaning: 'Переносит ваши коммиты поверх свежего main.',
-    when: 'Когда PR отстал от основной ветки и команда использует линейную историю.',
+    when: 'Когда PR (pull request) отстал от основной ветки и команда использует линейную историю.',
     tip: 'Не делайте rebase опубликованной общей ветки без договоренности с командой.',
     stage: 'pr',
   },
@@ -431,14 +435,14 @@ const commandsRu: Command[] = [
   {
     command: 'git branch -d feature/login-form',
     meaning: 'Удаляет локальную ветку, если она уже слита.',
-    when: 'После того как PR вмержен и ветка больше не нужна.',
+    when: 'После того как PR (pull request) вмержен и ветка больше не нужна.',
     tip: 'Используйте -D, чтобы удалить ветку, которая ещё не слита (осторожно).',
     stage: 'branch',
   },
   {
     command: 'git push origin --delete feature/login-form',
     meaning: 'Удаляет ветку из удалённого репозитория на GitHub.',
-    when: 'После мержа PR, если auto-delete branches не настроен.',
+    when: 'После мержа PR (pull request), если auto-delete branches не настроен.',
     tip: 'Многие команды включают "Automatically delete head branches" в настройках репозитория.',
     stage: 'branch',
   },
@@ -473,7 +477,7 @@ const commandsRu: Command[] = [
   {
     command: 'gh pr checkout 142',
     meaning: 'Скачивает чужой pull request в локальную ветку для проверки.',
-    when: 'Когда нужно запустить PR коллеги локально и протестировать.',
+    when: 'Когда нужно запустить PR (pull request) коллеги локально и протестировать.',
     tip: 'То же доступно в расширении GitHub Pull Requests одной кнопкой.',
     stage: 'pr',
   },
@@ -487,14 +491,14 @@ const commandsRu: Command[] = [
   {
     command: 'git push --force-with-lease',
     meaning: 'Безопасный force-push: не перезапишет чужие коммиты на ветке.',
-    when: 'После rebase или amend опубликованной ветки PR.',
+    when: 'После rebase или amend опубликованной ветки PR (pull request).',
     tip: 'Никогда не делайте обычный --force на общих ветках вроде main.',
     stage: 'pr',
   },
   {
     command: 'git fetch --prune',
     meaning: 'Забирает обновления с remote и удаляет устаревшие remote-tracking ветки, которых уже нет на GitHub.',
-    when: 'Периодически, чтобы список веток не зарастал мусором от давно вмерженных PR.',
+    when: 'Периодически, чтобы список веток не зарастал мусором от давно вмерженных PR (pull request).',
     tip: 'Настройте git config --global fetch.prune true — тогда prune будет происходить при каждом fetch/pull автоматически.',
     stage: 'daily',
   },
@@ -515,13 +519,13 @@ const workflowsRu: WorkflowStep[] = [
   },
   {
     title: 'Pull request и ревью',
-    role: 'Автор PR + ревьюер',
+    role: 'Автор PR (pull request) + ревьюер',
     body: 'Автор описывает контекст, прикладывает скриншоты, связывает issue. Ревьюер смотрит поведение, тесты и читаемость. Обсуждения ведутся в комментариях к конкретным строкам.',
     commands: ['gh pr create --fill --base main', 'gh pr view --web', 'git commit -m "Address review comments"', 'git push'],
   },
   {
-    title: 'Конфликт при обновлении PR',
-    role: 'Автор PR',
+    title: 'Конфликт при обновлении PR (pull request)',
+    role: 'Автор PR (pull request)',
     body: 'Если main ушел вперед, автор подтягивает изменения, решает конфликт в VS Code Merge Editor, запускает проверки и снова отправляет ветку.',
     commands: ['git fetch origin', 'git rebase origin/main', 'git status', 'npm test', 'git push --force-with-lease'],
   },
@@ -533,18 +537,18 @@ const workflowsRu: WorkflowStep[] = [
   },  {
     title: 'Релиз версии с тегом',
     role: 'Release-менеджер',
-    body: 'После прохождения всех PR в main создают версионный тег, публикуют GitHub Release с описанием изменений, GitHub Actions собирает и выкладывает артефакт.',
+    body: 'После прохождения всех PR (pull request) в main создают версионный тег, публикуют GitHub Release с описанием изменений, GitHub Actions собирает и выкладывает артефакт.',
     commands: ['git checkout main', 'git pull --ff-only', 'git tag -a v1.4.0 -m "Release 1.4.0"', 'git push origin v1.4.0', 'gh release create v1.4.0 --generate-notes'],
   },
   {
     title: 'Работа своим форком в open source',
     role: 'Внешний контрибьютор',
-    body: 'Форкают репозиторий в свой аккаунт, подключают оригинал как upstream, регулярно синхронизируют main и отправляют PR в оригинальный репозиторий.',
+    body: 'Форкают репозиторий в свой аккаунт, подключают оригинал как upstream, регулярно синхронизируют main и отправляют PR (pull request) в оригинальный репозиторий.',
     commands: ['git clone https://github.com/me/lib.git', 'git remote add upstream https://github.com/original/lib.git', 'git fetch upstream', 'git rebase upstream/main', 'git push --force-with-lease'],
   },
   {
     title: 'Ревью с несколькими итерациями и fixup-коммитами',
-    role: 'Автор PR',
+    role: 'Автор PR (pull request)',
     body: 'Правки по ревью фиксируют отдельными fixup-коммитами, чтобы ревьюер видел разницу. Перед слиянием их склеивают autosquash-rebase в один аккуратный коммит.',
     commands: ['git commit --fixup HEAD', 'git push', 'git fetch origin', 'git rebase -i --autosquash origin/main', 'git push --force-with-lease'],
   },
@@ -556,14 +560,14 @@ const workflowsRu: WorkflowStep[] = [
   },]
 
 const extensionsRu = [
-  ['GitHub Pull Requests', 'Работа с PR и issue прямо в VS Code: checkout PR, комментарии, ревью, статусы проверок.'],
+  ['GitHub Pull Requests', 'Работа с PR (pull request) и issue прямо в VS Code: checkout PR (pull request), комментарии, ревью, статусы проверок.'],
   ['GitLens', 'История строк, авторы изменений, сравнение веток, навигация по коммитам.'],
   ['Git Graph', 'Наглядный граф веток, merge, rebase и история проекта.'],
   ['GitHub Actions', 'Просмотр workflow, логов CI и статусов сборок.'],
   ['GitHub Repositories', 'Открытие репозиториев без полного clone, удобно для чтения и быстрого просмотра.'],
   ['Project Manager', 'Быстрое переключение между несколькими локальными проектами.'],
   ['Conventional Commits', 'Подсказывает формат сообщений (feat, fix, chore) и упрощает автогенерацию changelog.'],
-  ['Code Spell Checker', 'Ловит опечатки в коммитах, именах веток и PR-описаниях.'],
+  ['Code Spell Checker', 'Ловит опечатки в коммитах, именах веток и PR (pull request)-описаниях.'],
 ]
 
 type ExtWorkflowStep = {
@@ -605,10 +609,10 @@ const extWorkflowStepsRu: ExtWorkflowStep[] = [
   },
   {
     stage: '04',
-    title: 'Пушим ветку и открываем PR',
+    title: 'Пушим ветку и открываем PR (pull request)',
     extensions: [
-      { name: 'GitHub Pull Requests', action: 'Создание PR прямо из VS Code: заголовок, описание, ревьюеры, labels — всё в одном окне.' },
-      { name: 'GitLens', action: 'Сравнение вашей ветки с main: видно все изменения перед открытием PR.' },
+      { name: 'GitHub Pull Requests', action: 'Создание PR (pull request) прямо из VS Code: заголовок, описание, ревьюеры, labels — всё в одном окне.' },
+      { name: 'GitLens', action: 'Сравнение вашей ветки с main: видно все изменения перед открытием PR (pull request).' },
     ],
     commands: ['git push -u origin feature/payment', '# → VS Code: GitHub Pull Requests → Create Pull Request'],
   },
@@ -616,7 +620,7 @@ const extWorkflowStepsRu: ExtWorkflowStep[] = [
     stage: '05',
     title: 'Ревью и обсуждение',
     extensions: [
-      { name: 'GitHub Pull Requests', action: 'Checkout чужого PR одной кнопкой, комментарии прямо в редакторе рядом с кодом.' },
+      { name: 'GitHub Pull Requests', action: 'Checkout чужого PR (pull request) одной кнопкой, комментарии прямо в редакторе рядом с кодом.' },
       { name: 'GitLens', action: 'История файла и blame помогают понять контекст изменений при ревью.' },
       { name: 'Git Graph', action: 'Видно, от какого коммита main отвелась ветка и что изменилось с тех пор.' },
     ],
@@ -632,7 +636,7 @@ const extWorkflowStepsRu: ExtWorkflowStep[] = [
   },
   {
     stage: '07',
-    title: 'Мержим PR и убираем ветку',
+    title: 'Мержим PR (pull request) и убираем ветку',
     extensions: [
       { name: 'GitHub Pull Requests', action: 'Кнопка Merge прямо в панели расширения — выбор стратегии (squash/rebase/merge commit).' },
       { name: 'Git Graph', action: 'После мержа видно, как коммиты влились в main — красивый визуальный граф.' },
@@ -685,7 +689,7 @@ const extWorkflowStepsEn: ExtWorkflowStep[] = [
     stage: '05',
     title: 'Review & discussion',
     extensions: [
-      { name: 'GitHub Pull Requests', action: 'Checkout someone\u2019s PR with one button, comment right in the editor next to the code.' },
+      { name: 'GitHub Pull Requests', action: 'Checkout someone\u2019s PR (pull request) with one button, comment right in the editor next to the code.' },
       { name: 'GitLens', action: 'File history and blame help understand the context of changes during review.' },
       { name: 'Git Graph', action: 'See which main commit the branch forked from and what changed since.' },
     ],
@@ -701,13 +705,400 @@ const extWorkflowStepsEn: ExtWorkflowStep[] = [
   },
   {
     stage: '07',
-    title: 'Merge the PR & clean up',
+    title: 'Merge the PR (pull request) & clean up',
     extensions: [
       { name: 'GitHub Pull Requests', action: 'Merge button right in the extension panel \u2014 choose strategy (squash/rebase/merge commit).' },
       { name: 'Git Graph', action: 'After merging you see how commits flowed into main \u2014 a beautiful visual graph.' },
       { name: 'GitLens', action: 'Interactive rebase before merging if you want to tidy up the history.' },
     ],
     commands: ['# \u2192 Merge PR \u2192 Delete branch', 'git fetch --prune', 'git switch main', 'git pull'],
+  },
+]
+
+type FlagGroup = {
+  command: string
+  flags: { flag: string; meaning: string; example: string }[]
+}
+
+const flagGroupsRu: FlagGroup[] = [
+  {
+    command: 'git clone',
+    flags: [
+      { flag: '--depth <n>', meaning: 'Shallow clone — скачать только последние n коммитов (ускоряет clone больших репо).', example: 'git clone --depth 1 https://github.com/org/app.git' },
+      { flag: '--branch <name>', meaning: 'Сразу переключиться на указанную ветку/тег после клонирования.', example: 'git clone --branch develop https://github.com/org/app.git' },
+      { flag: '--single-branch', meaning: 'Скачать историю только одной ветки (обычно вместе с --depth).', example: 'git clone --single-branch --branch main https://github.com/org/app.git' },
+      { flag: '--recurse-submodules', meaning: 'Автоматически инициализировать и скачать все submodules.', example: 'git clone --recurse-submodules https://github.com/org/app.git' },
+      { flag: '--bare', meaning: 'Клонировать только .git-данные без рабочей директории (для серверов/зеркал).', example: 'git clone --bare https://github.com/org/app.git' },
+    ],
+  },
+  {
+    command: 'git add',
+    flags: [
+      { flag: '-A / --all', meaning: 'Добавить все изменения: новые, изменённые и удалённые файлы.', example: 'git add -A' },
+      { flag: '-p / --patch', meaning: 'Интерактивно выбирать куски (hunks) для добавления из каждого файла.', example: 'git add -p src/api.ts' },
+      { flag: '-u / --update', meaning: 'Добавить только изменённые и удалённые файлы (не новые).', example: 'git add -u' },
+      { flag: '-n / --dry-run', meaning: 'Показать, что будет добавлено, без реального добавления.', example: 'git add -n .' },
+      { flag: '-f / --force', meaning: 'Добавить файл, даже если он в .gitignore.', example: 'git add -f dist/bundle.js' },
+    ],
+  },
+  {
+    command: 'git commit',
+    flags: [
+      { flag: '-m "msg"', meaning: 'Указать сообщение коммита прямо в командной строке.', example: 'git commit -m "feat: add payment module"' },
+      { flag: '--amend', meaning: 'Переписать последний коммит (сообщение и/или файлы).', example: 'git commit --amend --no-edit' },
+      { flag: '--no-edit', meaning: 'При --amend не открывать редактор, оставить старое сообщение.', example: 'git commit --amend --no-edit' },
+      { flag: '-a / --all', meaning: 'Автоматически добавить все отслеживаемые изменённые файлы и закоммитить.', example: 'git commit -am "fix: typo in header"' },
+      { flag: '--allow-empty', meaning: 'Создать коммит без изменений (полезно для триггера CI).', example: 'git commit --allow-empty -m "trigger deploy"' },
+      { flag: '--fixup <hash>', meaning: 'Пометить коммит как fixup для последующего autosquash при rebase.', example: 'git commit --fixup abc1234' },
+      { flag: '-s / --signoff', meaning: 'Добавить строку Signed-off-by (требуется в некоторых OSS-проектах).', example: 'git commit -s -m "docs: update README"' },
+    ],
+  },
+  {
+    command: 'git push',
+    flags: [
+      { flag: '-u / --set-upstream', meaning: 'Привязать локальную ветку к remote (при первом push).', example: 'git push -u origin feature/login' },
+      { flag: '--force-with-lease', meaning: 'Безопасный force-push: откажет, если на remote есть чужие коммиты.', example: 'git push --force-with-lease' },
+      { flag: '--force', meaning: 'Принудительно перезаписать remote-ветку (опасно на общих ветках!).', example: 'git push --force origin feature/test' },
+      { flag: '--tags', meaning: 'Отправить все локальные теги на remote.', example: 'git push --tags' },
+      { flag: '--delete', meaning: 'Удалить ветку на remote.', example: 'git push origin --delete feature/old' },
+      { flag: '--no-verify', meaning: 'Пропустить pre-push хуки (осторожно!).', example: 'git push --no-verify' },
+    ],
+  },
+  {
+    command: 'git pull',
+    flags: [
+      { flag: '--rebase', meaning: 'Вместо merge сделать rebase локальных коммитов поверх remote.', example: 'git pull --rebase origin main' },
+      { flag: '--no-rebase', meaning: 'Явно использовать merge (даже если в конфиге стоит rebase).', example: 'git pull --no-rebase' },
+      { flag: '--autostash', meaning: 'Автоматически stash/unstash незакоммиченных изменений при pull.', example: 'git pull --rebase --autostash' },
+      { flag: '--ff-only', meaning: 'Откажет, если fast-forward невозможен (защита от неожиданных мержей).', example: 'git pull --ff-only' },
+    ],
+  },
+  {
+    command: 'git fetch',
+    flags: [
+      { flag: '--prune', meaning: 'Удалить remote-tracking ветки, которых больше нет на сервере.', example: 'git fetch --prune' },
+      { flag: '--all', meaning: 'Забрать изменения со всех remote (не только origin).', example: 'git fetch --all' },
+      { flag: '--tags', meaning: 'Скачать все теги с remote.', example: 'git fetch --tags' },
+      { flag: '--depth <n>', meaning: 'Ограничить глубину скачиваемой истории.', example: 'git fetch --depth 10 origin main' },
+    ],
+  },
+  {
+    command: 'git branch',
+    flags: [
+      { flag: '-a / --all', meaning: 'Показать все ветки: локальные + remote-tracking.', example: 'git branch -a' },
+      { flag: '-d / --delete', meaning: 'Удалить ветку (только если она уже слита).', example: 'git branch -d feature/done' },
+      { flag: '-D', meaning: 'Принудительно удалить ветку (даже неслитую).', example: 'git branch -D experiment/broken' },
+      { flag: '-m / --move', meaning: 'Переименовать ветку.', example: 'git branch -m old-name new-name' },
+      { flag: '-r / --remotes', meaning: 'Показать только remote-tracking ветки.', example: 'git branch -r' },
+      { flag: '-v / --verbose', meaning: 'Показать последний коммит каждой ветки.', example: 'git branch -v' },
+      { flag: '--merged', meaning: 'Показать ветки, которые уже слиты в текущую.', example: 'git branch --merged main' },
+      { flag: '--no-merged', meaning: 'Показать ветки, которые ещё НЕ слиты.', example: 'git branch --no-merged main' },
+    ],
+  },
+  {
+    command: 'git log',
+    flags: [
+      { flag: '--oneline', meaning: 'Компактный вывод: один коммит = одна строка.', example: 'git log --oneline -20' },
+      { flag: '--graph', meaning: 'Добавить ASCII-граф веток и мержей.', example: 'git log --oneline --graph --all' },
+      { flag: '--all', meaning: 'Показать коммиты всех веток, не только текущей.', example: 'git log --all --oneline' },
+      { flag: '-n <число>', meaning: 'Ограничить количество выводимых коммитов.', example: 'git log -5' },
+      { flag: '-p / --patch', meaning: 'Показать diff каждого коммита.', example: 'git log -p src/api.ts' },
+      { flag: '--stat', meaning: 'Показать статистику изменений (файлы, +/- строки).', example: 'git log --stat -10' },
+      { flag: '--author="name"', meaning: 'Фильтр по автору.', example: 'git log --author="Ivan"' },
+      { flag: '--since / --until', meaning: 'Фильтр по дате.', example: 'git log --since="2024-01-01" --until="2024-02-01"' },
+      { flag: '--follow', meaning: 'Отслеживать переименования файла.', example: 'git log --follow src/utils.ts' },
+      { flag: '--grep="text"', meaning: 'Фильтр по тексту в сообщении коммита.', example: 'git log --grep="fix" --oneline' },
+    ],
+  },
+  {
+    command: 'git diff',
+    flags: [
+      { flag: '--staged / --cached', meaning: 'Показать diff только для staged (добавленных в индекс) файлов.', example: 'git diff --staged' },
+      { flag: '--stat', meaning: 'Краткая статистика: какие файлы изменены.', example: 'git diff --stat main..feature' },
+      { flag: '--name-only', meaning: 'Только имена изменённых файлов (без содержимого).', example: 'git diff --name-only HEAD~3' },
+      { flag: '--word-diff', meaning: 'Подсветить изменения на уровне слов, а не строк.', example: 'git diff --word-diff' },
+      { flag: '--no-color', meaning: 'Отключить цветовую подсветку (для скриптов/пайпов).', example: 'git diff --no-color > changes.patch' },
+    ],
+  },
+  {
+    command: 'git stash',
+    flags: [
+      { flag: 'push -m "msg"', meaning: 'Сохранить изменения с понятным именем.', example: 'git stash push -m "WIP: login form"' },
+      { flag: '--include-untracked / -u', meaning: 'Включить в stash неотслеживаемые (новые) файлы.', example: 'git stash -u' },
+      { flag: '--keep-index', meaning: 'Оставить staged-файлы на месте, stash-ить только unstaged.', example: 'git stash --keep-index' },
+      { flag: 'pop', meaning: 'Применить последний stash и удалить его из списка.', example: 'git stash pop' },
+      { flag: 'apply stash@{n}', meaning: 'Применить конкретный stash, не удаляя его.', example: 'git stash apply stash@{2}' },
+      { flag: 'list', meaning: 'Показать все сохранённые stash-записи.', example: 'git stash list' },
+      { flag: 'drop stash@{n}', meaning: 'Удалить конкретный stash.', example: 'git stash drop stash@{0}' },
+    ],
+  },
+  {
+    command: 'git reset',
+    flags: [
+      { flag: '--soft <ref>', meaning: 'Откатить HEAD, но оставить изменения в staged (индексе).', example: 'git reset --soft HEAD~1' },
+      { flag: '--mixed <ref>', meaning: 'Откатить HEAD и unstage файлы (по умолчанию).', example: 'git reset HEAD~1' },
+      { flag: '--hard <ref>', meaning: 'Откатить HEAD, индекс И рабочую директорию (уничтожает изменения!).', example: 'git reset --hard origin/main' },
+    ],
+  },
+  {
+    command: 'git rebase',
+    flags: [
+      { flag: '-i / --interactive', meaning: 'Интерактивный rebase: pick, squash, reword, drop коммитов.', example: 'git rebase -i HEAD~5' },
+      { flag: '--onto <base>', meaning: 'Переместить ветку на другую базу.', example: 'git rebase --onto main feature/old feature/new' },
+      { flag: '--autosquash', meaning: 'Автоматически расположить fixup/squash-коммиты к их целям.', example: 'git rebase -i --autosquash origin/main' },
+      { flag: '--abort', meaning: 'Прервать rebase и вернуть ветку в исходное состояние.', example: 'git rebase --abort' },
+      { flag: '--continue', meaning: 'Продолжить rebase после разрешения конфликта.', example: 'git rebase --continue' },
+      { flag: '--skip', meaning: 'Пропустить текущий конфликтный коммит при rebase.', example: 'git rebase --skip' },
+    ],
+  },
+  {
+    command: 'git merge',
+    flags: [
+      { flag: '--no-ff', meaning: 'Всегда создавать merge-коммит (даже если fast-forward возможен).', example: 'git merge --no-ff feature/login' },
+      { flag: '--ff-only', meaning: 'Мержить только если возможен fast-forward (иначе отказ).', example: 'git merge --ff-only origin/main' },
+      { flag: '--squash', meaning: 'Склеить все коммиты ветки в один, без создания merge-коммита.', example: 'git merge --squash feature/refactor' },
+      { flag: '--abort', meaning: 'Прервать конфликтный merge и вернуть состояние.', example: 'git merge --abort' },
+      { flag: '--no-edit', meaning: 'Не открывать редактор для сообщения merge-коммита.', example: 'git merge --no-ff --no-edit feature/x' },
+    ],
+  },
+  {
+    command: 'git checkout / switch',
+    flags: [
+      { flag: '-b <name> (checkout)', meaning: 'Создать новую ветку и переключиться на неё.', example: 'git checkout -b feature/new' },
+      { flag: '-c <name> (switch)', meaning: 'Создать новую ветку и переключиться (современный синтаксис).', example: 'git switch -c feature/new' },
+      { flag: '--detach', meaning: 'Переключиться на коммит/тег в detached HEAD (без ветки).', example: 'git switch --detach v2.0.0' },
+      { flag: '-- <file>', meaning: 'Восстановить файл из последнего коммита (отмена изменений).', example: 'git checkout -- src/broken.ts' },
+    ],
+  },
+  {
+    command: 'git tag',
+    flags: [
+      { flag: '-a <name>', meaning: 'Создать аннотированный тег (с автором, датой, сообщением).', example: 'git tag -a v1.0.0 -m "Release 1.0"' },
+      { flag: '-m "msg"', meaning: 'Сообщение для аннотированного тега.', example: 'git tag -a v2.1.0 -m "Hotfix release"' },
+      { flag: '-d <name>', meaning: 'Удалить локальный тег.', example: 'git tag -d v1.0.0-beta' },
+      { flag: '-l / --list', meaning: 'Список тегов (поддерживает glob-паттерны).', example: 'git tag -l "v2.*"' },
+    ],
+  },
+  {
+    command: 'git remote',
+    flags: [
+      { flag: '-v / --verbose', meaning: 'Показать URL для fetch и push каждого remote.', example: 'git remote -v' },
+      { flag: 'add <name> <url>', meaning: 'Добавить новый remote.', example: 'git remote add upstream https://github.com/original/repo.git' },
+      { flag: 'remove <name>', meaning: 'Удалить remote.', example: 'git remote remove old-origin' },
+      { flag: 'set-url <name> <url>', meaning: 'Изменить URL существующего remote.', example: 'git remote set-url origin git@github.com:me/app.git' },
+      { flag: 'rename <old> <new>', meaning: 'Переименовать remote.', example: 'git remote rename origin github' },
+    ],
+  },
+  {
+    command: 'git clean',
+    flags: [
+      { flag: '-f / --force', meaning: 'Обязательный флаг — без него clean не удалит файлы.', example: 'git clean -f' },
+      { flag: '-d', meaning: 'Удалить также пустые неотслеживаемые директории.', example: 'git clean -fd' },
+      { flag: '-n / --dry-run', meaning: 'Показать, что будет удалено, без удаления.', example: 'git clean -nd' },
+      { flag: '-x', meaning: 'Удалить даже файлы из .gitignore (node_modules, dist и т.д.).', example: 'git clean -fdx' },
+      { flag: '-X', meaning: 'Удалить ТОЛЬКО файлы из .gitignore.', example: 'git clean -fX' },
+    ],
+  },
+  {
+    command: 'git config',
+    flags: [
+      { flag: '--global', meaning: 'Записать настройку для всех репозиториев текущего пользователя.', example: 'git config --global user.name "Ivan"' },
+      { flag: '--local', meaning: 'Записать настройку только для текущего репозитория.', example: 'git config --local core.autocrlf input' },
+      { flag: '--system', meaning: 'Записать настройку для всех пользователей системы.', example: 'git config --system core.longpaths true' },
+      { flag: '--list', meaning: 'Показать все текущие настройки.', example: 'git config --global --list' },
+      { flag: '--unset', meaning: 'Удалить конкретную настройку.', example: 'git config --global --unset core.editor' },
+    ],
+  },
+]
+
+const flagGroupsEn: FlagGroup[] = [
+  {
+    command: 'git clone',
+    flags: [
+      { flag: '--depth <n>', meaning: 'Shallow clone \u2014 download only the last n commits (speeds up cloning large repos).', example: 'git clone --depth 1 https://github.com/org/app.git' },
+      { flag: '--branch <name>', meaning: 'Immediately check out the specified branch/tag after cloning.', example: 'git clone --branch develop https://github.com/org/app.git' },
+      { flag: '--single-branch', meaning: 'Download history of only one branch (usually paired with --depth).', example: 'git clone --single-branch --branch main https://github.com/org/app.git' },
+      { flag: '--recurse-submodules', meaning: 'Automatically initialize and download all submodules.', example: 'git clone --recurse-submodules https://github.com/org/app.git' },
+      { flag: '--bare', meaning: 'Clone only the .git data without a working directory (for servers/mirrors).', example: 'git clone --bare https://github.com/org/app.git' },
+    ],
+  },
+  {
+    command: 'git add',
+    flags: [
+      { flag: '-A / --all', meaning: 'Stage all changes: new, modified and deleted files.', example: 'git add -A' },
+      { flag: '-p / --patch', meaning: 'Interactively select hunks from each file to stage.', example: 'git add -p src/api.ts' },
+      { flag: '-u / --update', meaning: 'Stage only modified and deleted files (not new ones).', example: 'git add -u' },
+      { flag: '-n / --dry-run', meaning: 'Show what would be staged without actually staging.', example: 'git add -n .' },
+      { flag: '-f / --force', meaning: 'Stage a file even if it is in .gitignore.', example: 'git add -f dist/bundle.js' },
+    ],
+  },
+  {
+    command: 'git commit',
+    flags: [
+      { flag: '-m "msg"', meaning: 'Specify the commit message inline.', example: 'git commit -m "feat: add payment module"' },
+      { flag: '--amend', meaning: 'Rewrite the last commit (message and/or files).', example: 'git commit --amend --no-edit' },
+      { flag: '--no-edit', meaning: 'With --amend, keep the old message without opening the editor.', example: 'git commit --amend --no-edit' },
+      { flag: '-a / --all', meaning: 'Automatically stage all tracked modified files and commit.', example: 'git commit -am "fix: typo in header"' },
+      { flag: '--allow-empty', meaning: 'Create a commit with no changes (useful to trigger CI).', example: 'git commit --allow-empty -m "trigger deploy"' },
+      { flag: '--fixup <hash>', meaning: 'Mark a commit as a fixup for later autosquash during rebase.', example: 'git commit --fixup abc1234' },
+      { flag: '-s / --signoff', meaning: 'Add a Signed-off-by line (required by some OSS projects).', example: 'git commit -s -m "docs: update README"' },
+    ],
+  },
+  {
+    command: 'git push',
+    flags: [
+      { flag: '-u / --set-upstream', meaning: 'Link the local branch to a remote branch (on first push).', example: 'git push -u origin feature/login' },
+      { flag: '--force-with-lease', meaning: 'Safe force-push: refuses if there are unknown commits on the remote.', example: 'git push --force-with-lease' },
+      { flag: '--force', meaning: 'Forcefully overwrite the remote branch (dangerous on shared branches!).', example: 'git push --force origin feature/test' },
+      { flag: '--tags', meaning: 'Push all local tags to the remote.', example: 'git push --tags' },
+      { flag: '--delete', meaning: 'Delete a branch on the remote.', example: 'git push origin --delete feature/old' },
+      { flag: '--no-verify', meaning: 'Skip pre-push hooks (use with caution!).', example: 'git push --no-verify' },
+    ],
+  },
+  {
+    command: 'git pull',
+    flags: [
+      { flag: '--rebase', meaning: 'Rebase local commits on top of the remote instead of merging.', example: 'git pull --rebase origin main' },
+      { flag: '--no-rebase', meaning: 'Explicitly use merge (even if config says rebase).', example: 'git pull --no-rebase' },
+      { flag: '--autostash', meaning: 'Automatically stash/unstash uncommitted changes during pull.', example: 'git pull --rebase --autostash' },
+      { flag: '--ff-only', meaning: 'Refuse if fast-forward is not possible (protects against unexpected merges).', example: 'git pull --ff-only' },
+    ],
+  },
+  {
+    command: 'git fetch',
+    flags: [
+      { flag: '--prune', meaning: 'Remove remote-tracking branches that no longer exist on the server.', example: 'git fetch --prune' },
+      { flag: '--all', meaning: 'Fetch changes from all remotes (not just origin).', example: 'git fetch --all' },
+      { flag: '--tags', meaning: 'Download all tags from the remote.', example: 'git fetch --tags' },
+      { flag: '--depth <n>', meaning: 'Limit the depth of fetched history.', example: 'git fetch --depth 10 origin main' },
+    ],
+  },
+  {
+    command: 'git branch',
+    flags: [
+      { flag: '-a / --all', meaning: 'Show all branches: local + remote-tracking.', example: 'git branch -a' },
+      { flag: '-d / --delete', meaning: 'Delete a branch (only if already merged).', example: 'git branch -d feature/done' },
+      { flag: '-D', meaning: 'Force-delete a branch (even if not merged).', example: 'git branch -D experiment/broken' },
+      { flag: '-m / --move', meaning: 'Rename a branch.', example: 'git branch -m old-name new-name' },
+      { flag: '-r / --remotes', meaning: 'Show only remote-tracking branches.', example: 'git branch -r' },
+      { flag: '-v / --verbose', meaning: 'Show the last commit of each branch.', example: 'git branch -v' },
+      { flag: '--merged', meaning: 'Show branches already merged into the current one.', example: 'git branch --merged main' },
+      { flag: '--no-merged', meaning: 'Show branches NOT yet merged.', example: 'git branch --no-merged main' },
+    ],
+  },
+  {
+    command: 'git log',
+    flags: [
+      { flag: '--oneline', meaning: 'Compact output: one commit = one line.', example: 'git log --oneline -20' },
+      { flag: '--graph', meaning: 'Add an ASCII branch/merge graph.', example: 'git log --oneline --graph --all' },
+      { flag: '--all', meaning: 'Show commits from all branches, not just the current one.', example: 'git log --all --oneline' },
+      { flag: '-n <number>', meaning: 'Limit the number of commits shown.', example: 'git log -5' },
+      { flag: '-p / --patch', meaning: 'Show the diff of each commit.', example: 'git log -p src/api.ts' },
+      { flag: '--stat', meaning: 'Show change statistics (files, +/- lines).', example: 'git log --stat -10' },
+      { flag: '--author="name"', meaning: 'Filter by author.', example: 'git log --author="Ivan"' },
+      { flag: '--since / --until', meaning: 'Filter by date.', example: 'git log --since="2024-01-01" --until="2024-02-01"' },
+      { flag: '--follow', meaning: 'Track file renames.', example: 'git log --follow src/utils.ts' },
+      { flag: '--grep="text"', meaning: 'Filter by text in the commit message.', example: 'git log --grep="fix" --oneline' },
+    ],
+  },
+  {
+    command: 'git diff',
+    flags: [
+      { flag: '--staged / --cached', meaning: 'Show diff only for staged (indexed) files.', example: 'git diff --staged' },
+      { flag: '--stat', meaning: 'Brief statistics: which files changed.', example: 'git diff --stat main..feature' },
+      { flag: '--name-only', meaning: 'Only names of changed files (no content).', example: 'git diff --name-only HEAD~3' },
+      { flag: '--word-diff', meaning: 'Highlight changes at the word level, not line level.', example: 'git diff --word-diff' },
+      { flag: '--no-color', meaning: 'Disable color output (for scripts/pipes).', example: 'git diff --no-color > changes.patch' },
+    ],
+  },
+  {
+    command: 'git stash',
+    flags: [
+      { flag: 'push -m "msg"', meaning: 'Save changes with a descriptive name.', example: 'git stash push -m "WIP: login form"' },
+      { flag: '--include-untracked / -u', meaning: 'Include untracked (new) files in the stash.', example: 'git stash -u' },
+      { flag: '--keep-index', meaning: 'Keep staged files in place, only stash unstaged.', example: 'git stash --keep-index' },
+      { flag: 'pop', meaning: 'Apply the last stash and remove it from the list.', example: 'git stash pop' },
+      { flag: 'apply stash@{n}', meaning: 'Apply a specific stash without removing it.', example: 'git stash apply stash@{2}' },
+      { flag: 'list', meaning: 'Show all saved stash entries.', example: 'git stash list' },
+      { flag: 'drop stash@{n}', meaning: 'Delete a specific stash.', example: 'git stash drop stash@{0}' },
+    ],
+  },
+  {
+    command: 'git reset',
+    flags: [
+      { flag: '--soft <ref>', meaning: 'Move HEAD back but keep changes staged.', example: 'git reset --soft HEAD~1' },
+      { flag: '--mixed <ref>', meaning: 'Move HEAD back and unstage files (default).', example: 'git reset HEAD~1' },
+      { flag: '--hard <ref>', meaning: 'Move HEAD back, reset index AND working directory (destroys changes!).', example: 'git reset --hard origin/main' },
+    ],
+  },
+  {
+    command: 'git rebase',
+    flags: [
+      { flag: '-i / --interactive', meaning: 'Interactive rebase: pick, squash, reword, drop commits.', example: 'git rebase -i HEAD~5' },
+      { flag: '--onto <base>', meaning: 'Move a branch onto a different base.', example: 'git rebase --onto main feature/old feature/new' },
+      { flag: '--autosquash', meaning: 'Automatically place fixup/squash commits next to their targets.', example: 'git rebase -i --autosquash origin/main' },
+      { flag: '--abort', meaning: 'Abort the rebase and restore the branch to its original state.', example: 'git rebase --abort' },
+      { flag: '--continue', meaning: 'Continue the rebase after resolving a conflict.', example: 'git rebase --continue' },
+      { flag: '--skip', meaning: 'Skip the current conflicting commit during rebase.', example: 'git rebase --skip' },
+    ],
+  },
+  {
+    command: 'git merge',
+    flags: [
+      { flag: '--no-ff', meaning: 'Always create a merge commit (even if fast-forward is possible).', example: 'git merge --no-ff feature/login' },
+      { flag: '--ff-only', meaning: 'Merge only if fast-forward is possible (otherwise refuse).', example: 'git merge --ff-only origin/main' },
+      { flag: '--squash', meaning: 'Squash all branch commits into one, without creating a merge commit.', example: 'git merge --squash feature/refactor' },
+      { flag: '--abort', meaning: 'Abort a conflicting merge and restore the state.', example: 'git merge --abort' },
+      { flag: '--no-edit', meaning: 'Don\u2019t open the editor for the merge commit message.', example: 'git merge --no-ff --no-edit feature/x' },
+    ],
+  },
+  {
+    command: 'git checkout / switch',
+    flags: [
+      { flag: '-b <name> (checkout)', meaning: 'Create a new branch and switch to it.', example: 'git checkout -b feature/new' },
+      { flag: '-c <name> (switch)', meaning: 'Create a new branch and switch (modern syntax).', example: 'git switch -c feature/new' },
+      { flag: '--detach', meaning: 'Switch to a commit/tag in detached HEAD mode (no branch).', example: 'git switch --detach v2.0.0' },
+      { flag: '-- <file>', meaning: 'Restore a file from the last commit (discard changes).', example: 'git checkout -- src/broken.ts' },
+    ],
+  },
+  {
+    command: 'git tag',
+    flags: [
+      { flag: '-a <name>', meaning: 'Create an annotated tag (with author, date, message).', example: 'git tag -a v1.0.0 -m "Release 1.0"' },
+      { flag: '-m "msg"', meaning: 'Message for the annotated tag.', example: 'git tag -a v2.1.0 -m "Hotfix release"' },
+      { flag: '-d <name>', meaning: 'Delete a local tag.', example: 'git tag -d v1.0.0-beta' },
+      { flag: '-l / --list', meaning: 'List tags (supports glob patterns).', example: 'git tag -l "v2.*"' },
+    ],
+  },
+  {
+    command: 'git remote',
+    flags: [
+      { flag: '-v / --verbose', meaning: 'Show fetch and push URLs for each remote.', example: 'git remote -v' },
+      { flag: 'add <name> <url>', meaning: 'Add a new remote.', example: 'git remote add upstream https://github.com/original/repo.git' },
+      { flag: 'remove <name>', meaning: 'Remove a remote.', example: 'git remote remove old-origin' },
+      { flag: 'set-url <name> <url>', meaning: 'Change the URL of an existing remote.', example: 'git remote set-url origin git@github.com:me/app.git' },
+      { flag: 'rename <old> <new>', meaning: 'Rename a remote.', example: 'git remote rename origin github' },
+    ],
+  },
+  {
+    command: 'git clean',
+    flags: [
+      { flag: '-f / --force', meaning: 'Required flag \u2014 without it clean won\u2019t delete files.', example: 'git clean -f' },
+      { flag: '-d', meaning: 'Also delete empty untracked directories.', example: 'git clean -fd' },
+      { flag: '-n / --dry-run', meaning: 'Show what would be deleted without deleting.', example: 'git clean -nd' },
+      { flag: '-x', meaning: 'Delete even files from .gitignore (node_modules, dist, etc.).', example: 'git clean -fdx' },
+      { flag: '-X', meaning: 'Delete ONLY files matching .gitignore.', example: 'git clean -fX' },
+    ],
+  },
+  {
+    command: 'git config',
+    flags: [
+      { flag: '--global', meaning: 'Write the setting for all repos of the current user.', example: 'git config --global user.name "Ivan"' },
+      { flag: '--local', meaning: 'Write the setting only for the current repository.', example: 'git config --local core.autocrlf input' },
+      { flag: '--system', meaning: 'Write the setting for all users on the system.', example: 'git config --system core.longpaths true' },
+      { flag: '--list', meaning: 'Show all current settings.', example: 'git config --global --list' },
+      { flag: '--unset', meaning: 'Remove a specific setting.', example: 'git config --global --unset core.editor' },
+    ],
   },
 ]
 
@@ -1867,7 +2258,7 @@ const casesRu: Case[] = [
   {
     icon: '🔑',
     title: 'Закоммитил .env с паролями',
-    problem: 'PR уже открыт, в истории видны API-ключи. Reset бессмыслен — секрет уже на GitHub.',
+    problem: 'PR (pull request) уже открыт, в истории видны API-ключи. Reset бессмыслен — секрет уже на GitHub.',
     solution: 'Сразу отозвите токен в панели провайдера, добавьте .env в .gitignore, почистите историю и форс-пушьте ветку. Предупредите команду: им нужно будет переклонировать репозиторий.',
     commands: ['echo .env >> .gitignore', 'git rm --cached .env', 'git commit -m "Stop tracking .env"', 'git filter-repo --path .env --invert-paths', 'git push origin --force --all'],
     tag: 'security',
@@ -1920,9 +2311,9 @@ const casesRu: Case[] = [
   },
   {
     icon: '🤝',
-    title: 'PR разросся и никто не хочет его ревьюить',
+    title: 'PR (pull request) разросся и никто не хочет его ревьюить',
     problem: '300+ файлов, смешаны рефакторинг и новая фича.',
-    solution: 'Разбейте на stacked PR-ы: выделите рефакторинг в отдельную ветку, фичу — поверх неё. Каждый PR по ​200–400 строк ревьюится в несколько раз быстрее.',
+    solution: 'Разбейте на stacked PR (pull request)-ы: выделите рефакторинг в отдельную ветку, фичу — поверх неё. Каждый PR (pull request) по ​200–400 строк ревьюится в несколько раз быстрее.',
     commands: ['git switch -c refactor/extract-api main', 'git cherry-pick <refactor commits>', 'gh pr create --base main --title "Refactor API layer"', 'git switch -c feature/profile refactor/extract-api'],
     tag: 'team',
     viz: 'big-pr',
@@ -2022,21 +2413,21 @@ const casesRu: Case[] = [
 const strategiesRu: Strategy[] = [
   {
     name: 'Merge commit',
-    summary: 'Создаёт отдельный merge-коммит и сохраняет все коммиты PR как есть.',
+    summary: 'Создаёт отдельный merge-коммит и сохраняет все коммиты PR (pull request) как есть.',
     when: 'Команда хочет видеть, как велась работа по фиче.',
     pros: ['Сохраняет полную историю', 'Ничего не переписывает', 'История ревью понятна'],
     cons: ['Много шума в git log', 'Нелинейный граф истории'],
   },
   {
     name: 'Squash and merge',
-    summary: 'Склеивает все коммиты PR в один и добавляет в main.',
+    summary: 'Склеивает все коммиты PR (pull request) в один и добавляет в main.',
     when: 'Команда хочет линейную историю, 1 PR = 1 коммит.',
     pros: ['Чистый и линейный main', 'Легко делать revert фичи', 'Не видны WIP-коммиты'],
     cons: ['Теряется история по шагам', 'Авторство сливается в одного'],
   },
   {
     name: 'Rebase and merge',
-    summary: 'Переносит коммиты PR поверх main без merge-коммита.',
+    summary: 'Переносит коммиты PR (pull request) поверх main без merge-коммита.',
     when: 'Команда хочет линейную историю, но сохранить все коммиты.',
     pros: ['Идеально линейный граф', 'Коммиты остаются отдельными', 'Легко bisect-ить ошибки'],
     cons: ['Автор должен держать ветку чистой', 'Конфликты решаются пошагово', 'Хэши коммитов меняются'],
@@ -2071,7 +2462,7 @@ const glossaryRu: GlossaryItem[] = [
   { term: 'Fork', definition: 'Личная копия чужого репозитория на GitHub. Используется, чтобы предложить правки в проект, на который у вас нет прав.' },
   { term: 'Merge', definition: 'Объединение двух веток. Git создаёт «merge-коммит» с двумя родителями. История сохраняется как было.' },
   { term: 'Rebase', definition: 'Перенос ваших коммитов на верхушку другой ветки. История становится линейной, но коммиты получают новые хэши (это переписывание).' },
-  { term: 'Squash', definition: 'Слить несколько коммитов в один. Часто применяется при merge PR — чтобы в main был один аккуратный коммит на фичу.' },
+  { term: 'Squash', definition: 'Слить несколько коммитов в один. Часто применяется при merge PR (pull request) — чтобы в main был один аккуратный коммит на фичу.' },
   { term: 'Cherry-pick', definition: 'Скопировать конкретный коммит из одной ветки в другую. Удобно для hotfix-ов в release-ветке.' },
   { term: 'Revert', definition: 'Создать новый коммит, который отменяет изменения старого. Безопасно для общих веток — историю не переписывает.' },
   { term: 'Reset', definition: 'Перевести HEAD на другой коммит. `--soft` сохранит файлы, `--hard` сотрёт всё. Опасная команда — переписывает историю.' },
@@ -2115,6 +2506,7 @@ const commands = (lang === 'en' ? commandsEn : commandsRu) as unknown as Command
 const workflows = (lang === 'en' ? workflowsEn : workflowsRu) as unknown as WorkflowStep[]
 const extensions = (lang === 'en' ? extensionsEn : extensionsRu) as unknown as readonly (readonly [string, string])[]
 const extWorkflowSteps = (lang === 'en' ? extWorkflowStepsEn : extWorkflowStepsRu) as ExtWorkflowStep[]
+const flagGroups = (lang === 'en' ? flagGroupsEn : flagGroupsRu) as FlagGroup[]
 const concepts = (lang === 'en' ? conceptsEn : conceptsRu) as unknown as Concept[]
 const tracks = (lang === 'en' ? tracksEn : tracksRu) as unknown as Track[]
 const cases = (lang === 'en' ? casesEn : casesRu) as unknown as Case[]
@@ -2329,6 +2721,33 @@ $ gh pr create --fill --base main</code></pre>
               </div>
             </div>
           </article>
+        `).join('')}
+      </div>
+    </section>
+
+    <section class="section section--tinted" id="flags">
+      <div class="section__head">
+        <p class="eyebrow">${t().eyebrows.flags}</p>
+        <h2>${t().h2.flags}</h2>
+        <p>${t().intro.flags}</p>
+      </div>
+      <div class="flags-grid">
+        ${flagGroups.map((g) => `
+          <details class="flag-group">
+            <summary class="flag-group-head"><code>${g.command}</code></summary>
+            <table class="flag-table">
+              <thead><tr><th>Флаг</th><th>${lang === 'en' ? 'Meaning' : 'Что делает'}</th><th>${lang === 'en' ? 'Example' : 'Пример'}</th></tr></thead>
+              <tbody>
+                ${g.flags.map((f) => `
+                  <tr>
+                    <td><code>${f.flag}</code></td>
+                    <td>${f.meaning}</td>
+                    <td><code>${f.example}</code></td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </details>
         `).join('')}
       </div>
     </section>
@@ -2639,6 +3058,11 @@ const sideEntries: SideEntry[] = [
     id: 'ext-workflow',
     label: t().nav.extWorkflow,
     children: extWorkflowSteps.map((step) => ({ label: `${step.stage} \u2014 ${step.title}`, action: () => {} })),
+  },
+  {
+    id: 'flags',
+    label: t().nav.flags,
+    children: flagGroups.map((g) => ({ label: g.command, action: () => {} })),
   },
   { id: 'glossary', label: t().nav.glossary },
   {

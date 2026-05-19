@@ -456,6 +456,81 @@ code {
   box-shadow: 0 4px 12px rgba(30, 138, 107, 0.35);
 }
 
+/* Flags section */
+.flags-grid {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.flag-group {
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.flag-group-head {
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.flag-group-head::-webkit-details-marker {
+  display: none;
+}
+
+.flag-group-head::before {
+  content: '▶';
+  font-size: 0.7rem;
+  transition: transform 0.2s;
+}
+
+.flag-group[open] > .flag-group-head::before {
+  transform: rotate(90deg);
+}
+
+.flag-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.flag-table thead {
+  background: var(--border);
+}
+
+.flag-table th,
+.flag-table td {
+  padding: 0.6rem 1rem;
+  text-align: left;
+  border-top: 1px solid var(--border);
+}
+
+.flag-table td:first-child {
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.flag-table td code {
+  font-size: 0.82rem;
+  word-break: break-all;
+}
+
+@media (max-width: 768px) {
+  .flag-table th:nth-child(3),
+  .flag-table td:nth-child(3) {
+    display: none;
+  }
+}
+
 .command-layout {
   width: min(1120px, 100%);
   margin: 0 auto;
