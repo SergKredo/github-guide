@@ -3160,3 +3160,64 @@ sectionMap.forEach((_, id) => {
   const section = document.getElementById(id)
   if (section) spyObserver.observe(section)
 })
+
+// --- Tooltips for git commands ---
+const cmdTooltips: Record<string, { ru: string; en: string }> = {
+  'git init': { ru: 'Создаёт новый репозиторий в папке — как завести дневник для проекта', en: 'Creates a new repository in the folder — like starting a diary for a project' },
+  'git clone': { ru: 'Скачивает копию проекта из интернета на твой компьютер', en: 'Downloads a copy of a project from the internet to your computer' },
+  'git add': { ru: 'Отмечает файлы, которые ты хочешь сохранить — как положить вещи в коробку перед отправкой', en: 'Marks files you want to save — like putting things in a box before shipping' },
+  'git commit': { ru: 'Сохраняет отмеченные изменения с подписью — как сделать фото текущего состояния', en: 'Saves marked changes with a message — like taking a snapshot of the current state' },
+  'git push': { ru: 'Отправляет твои сохранения на сервер, чтобы другие тоже их увидели', en: 'Sends your saves to the server so others can see them too' },
+  'git pull': { ru: 'Скачивает чужие изменения с сервера и сразу применяет к твоему коду', en: 'Downloads others\' changes from the server and applies them to your code' },
+  'git fetch': { ru: 'Проверяет, что нового на сервере, но не трогает твой код', en: 'Checks what\'s new on the server without touching your code' },
+  'git status': { ru: 'Показывает, какие файлы изменены и что ещё не сохранено', en: 'Shows which files are changed and what\'s not yet saved' },
+  'git log': { ru: 'Показывает историю всех сохранений — кто, когда и что менял', en: 'Shows the history of all saves — who changed what and when' },
+  'git diff': { ru: 'Показывает разницу между версиями — что именно было добавлено или убрано', en: 'Shows the difference between versions — what was added or removed' },
+  'git branch': { ru: 'Создаёт или показывает ветки — параллельные версии проекта', en: 'Creates or shows branches — parallel versions of the project' },
+  'git checkout': { ru: 'Переключается на другую ветку или возвращает файл к прошлому состоянию', en: 'Switches to another branch or restores a file to a previous state' },
+  'git switch': { ru: 'Переключается на другую ветку (более простая альтернатива checkout)', en: 'Switches to another branch (simpler alternative to checkout)' },
+  'git merge': { ru: 'Объединяет две ветки в одну — как соединить два черновика в один документ', en: 'Combines two branches into one — like merging two drafts into one document' },
+  'git rebase': { ru: 'Переносит твои коммиты поверх чужих — делает историю линейной и чистой', en: 'Moves your commits on top of others — makes history linear and clean' },
+  'git reset': { ru: 'Отменяет сохранения или убирает файлы из подготовленных — как кнопка «назад»', en: 'Undoes saves or unstages files — like a back button' },
+  'git revert': { ru: 'Создаёт новый коммит, который отменяет старый — безопасная отмена', en: 'Creates a new commit that undoes an old one — safe undo' },
+  'git stash': { ru: 'Прячет текущие изменения во временное хранилище, чтобы вернуться к ним позже', en: 'Hides current changes in a temporary storage to come back to them later' },
+  'git tag': { ru: 'Ставит метку на коммит — как закладка с названием версии (v1.0)', en: 'Puts a label on a commit — like a bookmark with a version name (v1.0)' },
+  'git remote': { ru: 'Управляет ссылками на серверы, где хранится проект', en: 'Manages links to servers where the project is stored' },
+  'git cherry-pick': { ru: 'Берёт один конкретный коммит из другой ветки и применяет к текущей', en: 'Takes one specific commit from another branch and applies it to the current one' },
+  'git bisect': { ru: 'Помогает найти коммит, в котором появилась ошибка — ищет методом деления пополам', en: 'Helps find the commit that introduced a bug — searches by splitting in half' },
+  'git blame': { ru: 'Показывает, кто последний менял каждую строку файла', en: 'Shows who last changed each line of a file' },
+  'git clean': { ru: 'Удаляет неотслеживаемые файлы — как уборка мусора в папке', en: 'Removes untracked files — like cleaning junk from a folder' },
+  'git config': { ru: 'Настраивает Git — имя, email, поведение команд', en: 'Configures Git — name, email, command behavior' },
+  'git rm': { ru: 'Удаляет файл и сразу отмечает удаление для сохранения', en: 'Deletes a file and marks the deletion for the next save' },
+  'git mv': { ru: 'Переименовывает или перемещает файл, сохраняя историю', en: 'Renames or moves a file while keeping history' },
+  'git show': { ru: 'Показывает подробности конкретного коммита — что было изменено', en: 'Shows details of a specific commit — what was changed' },
+  'git reflog': { ru: 'Показывает ВСЮ историю перемещений HEAD — спасает, если что-то потерялось', en: 'Shows ALL history of HEAD movements — saves you when something is lost' },
+  'git restore': { ru: 'Возвращает файл к последнему сохранённому состоянию', en: 'Restores a file to its last saved state' },
+  'git worktree': { ru: 'Позволяет работать с несколькими ветками одновременно в разных папках', en: 'Lets you work with multiple branches simultaneously in different folders' },
+  'git submodule': { ru: 'Подключает другой репозиторий внутрь твоего как вложенную папку', en: 'Connects another repository inside yours as a nested folder' },
+  'git archive': { ru: 'Создаёт zip/tar архив из файлов репозитория', en: 'Creates a zip/tar archive from repository files' },
+  'git shortlog': { ru: 'Краткая сводка коммитов по авторам', en: 'Brief summary of commits by author' },
+  'git describe': { ru: 'Показывает ближайший тег и расстояние до текущего коммита', en: 'Shows the nearest tag and distance to the current commit' },
+}
+
+// Attach tooltips to <code> elements containing git commands
+;(function attachTooltips() {
+  const codeEls = document.querySelectorAll<HTMLElement>('code')
+  const cmdKeys = Object.keys(cmdTooltips).sort((a, b) => b.length - a.length) // longest first
+
+  codeEls.forEach((el) => {
+    const text = el.textContent?.trim() ?? ''
+    // Match if the code starts with a known git command
+    const matched = cmdKeys.find((cmd) => text === cmd || text.startsWith(cmd + ' ') || text.startsWith(cmd + '\n'))
+    if (!matched) return
+    // Skip if already wrapped
+    if (el.closest('.git-tooltip-wrap')) return
+
+    const tip = lang === 'en' ? cmdTooltips[matched].en : cmdTooltips[matched].ru
+    const wrapper = document.createElement('span')
+    wrapper.className = 'git-tooltip-wrap'
+    wrapper.setAttribute('data-tip', tip)
+    el.parentNode!.insertBefore(wrapper, el)
+    wrapper.appendChild(el)
+  })
+})()

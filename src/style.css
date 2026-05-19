@@ -1730,3 +1730,63 @@ code {
 :root[data-theme="dark"] .sidenav-sub {
   border-left-color: var(--line);
 }
+
+/* --- Git command tooltips --- */
+.git-tooltip-wrap {
+  position: relative;
+  display: inline;
+  cursor: help;
+}
+
+.git-tooltip-wrap code {
+  border-bottom: 1px dashed var(--accent);
+}
+
+.git-tooltip-wrap::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: normal;
+  width: max-content;
+  max-width: 280px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s;
+  z-index: 9999;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  font-family: var(--font-body, system-ui, sans-serif);
+}
+
+.git-tooltip-wrap::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--ink);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s;
+  z-index: 9999;
+}
+
+.git-tooltip-wrap:hover::after,
+.git-tooltip-wrap:hover::before {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .git-tooltip-wrap::after {
+    max-width: 200px;
+    font-size: 0.72rem;
+  }
+}
